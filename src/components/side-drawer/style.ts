@@ -54,7 +54,7 @@ export const ListTitle = styled.p`
 `
 
 export const StyledLink = styled(Link) <{
-    isActive?: boolean
+    $isActive?: boolean
 }>`
     flex: 1;
     text-decoration: none;
@@ -75,7 +75,7 @@ export const StyledLink = styled(Link) <{
         background-color: rgba(156, 113, 252, 0.03);
     }
 
-    ${props => props.isActive && css`
+    ${props => props.$isActive && css`
         background-color: rgba(156, 113, 252, 0.05);
         color: #9C71FC;
 

@@ -35,7 +35,7 @@ const StyledItem = ({ to, icon, text }: StyledItemProps) => {
 
     return (
         <Item>
-            <StyledLink to={to} isActive={isActive}>
+            <StyledLink to={to} $isActive={isActive}>
                 {icon}
                 <p>{text} </p>
             </StyledLink>

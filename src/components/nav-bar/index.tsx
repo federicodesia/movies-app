@@ -1,9 +1,9 @@
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi"
 import { AiOutlineMessage } from "react-icons/ai"
 import { FiBell } from "react-icons/fi"
 
-import { Wrapper, Options, DotIconWrapper, Dot } from "./style"
+import { Wrapper, Options, DotIconWrapper } from "./style"
 import { IconContext } from "react-icons"
+import { DotIndicator } from "../../styles/dot-indicator"
 
 const NavBar = () => {
     return <IconContext.Provider value={{ color: 'white', size: '20px' }}>
@@ -15,12 +15,12 @@ const NavBar = () => {
             <Options>
                 <DotIconWrapper>
                     <FiBell />
-                    <Dot isActive={true} />
+                    <DotIndicator isActive={true} />
                 </DotIconWrapper>
 
                 <DotIconWrapper>
                     <AiOutlineMessage />
-                    <Dot isActive={true} />
+                    <DotIndicator isActive={true} />
                 </DotIconWrapper>
             </Options>
         </Wrapper>

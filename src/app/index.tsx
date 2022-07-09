@@ -3,6 +3,7 @@ import { Wrapper, Content, RoutesWrapper } from './style';
 import SideDrawer from '../components/side-drawer';
 import NavBar from '../components/nav-bar';
 import HomeRoute from '../routes/home';
+import FriendsDrawer from '../components/friends-drawer';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           </Routes>
         </RoutesWrapper>
       </Content>
+
+      <FriendsDrawer/>
     </Wrapper>
   )
 }
