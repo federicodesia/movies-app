@@ -9,13 +9,6 @@ export const Wrapper = styled.div`
     justify-content: center;
 `
 
-export const CenteredColumn = styled.div`
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 32px;
-    overflow-y: overlay;
-`
-
 export const List = styled.ul`
     margin: 0px;
     padding: 0px;
@@ -24,6 +17,9 @@ export const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    padding: 24px 0px;
+    overflow-y: overlay;
 `
 
 export const Item = styled.li`
