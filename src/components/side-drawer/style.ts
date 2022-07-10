@@ -84,21 +84,3 @@ export const StyledLink = styled(Link) <{
         }
     `}
 `
-
-export const ActiveIndicator = styled.div<{
-    isActive?: boolean
-}>`
-    width: 4px;
-    background-color: #9C71FC;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-
-    height: 0px;
-    opacity: 0;
-    transition: all ease 300ms;
-
-    ${props => props.isActive && css`
-        height: 24px;
-        opacity: 1;
-    `}
-`

@@ -3,7 +3,6 @@ import { DotIndicator } from "../../styles/dot-indicator";
 
 export const Wrapper = styled.div`
     background-color: #1B1C22;
-    color: rgba(255, 255, 255, 0.75);
     
     display: flex;
     flex-direction: column;
@@ -14,7 +13,6 @@ export const CenteredColumn = styled.div`
     display: grid;
     grid-auto-flow: row;
     grid-gap: 32px;
-    padding: 24px;
     overflow-y: overlay;
 `
 
@@ -29,13 +27,16 @@ export const List = styled.ul`
 `
 
 export const Item = styled.li`
-    position: relative;
+    display: flex;
+    align-items: center;
+
+    padding: 0px 24px;
+    padding-right: 0px;
+    gap: 20px;
 `
 
-export const ProfileImage = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+export const PositionRelative = styled.div`
+    position: relative;
 `
 
 export const StyledDotIndicator = styled(DotIndicator)`

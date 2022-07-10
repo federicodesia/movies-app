@@ -1,9 +1,10 @@
-import { Wrapper, HeaderWrapper, Header, LightHeader, List, Item, ListTitle, StyledLink, ActiveIndicator } from "./style";
+import { Wrapper, HeaderWrapper, Header, LightHeader, List, Item, ListTitle, StyledLink } from "./style";
 
 import { HiOutlineHome, HiOutlineLogout } from "react-icons/hi"
 import { TbHeart, TbCalendarMinus, TbUser, TbUsers, TbSettings } from "react-icons/tb"
 import { useMatch, useResolvedPath } from "react-router-dom";
 import { IconContext } from "react-icons";
+import ActiveIndicator from "../../styles/active-indicator";
 
 interface StyledListProps {
     title: string,
@@ -35,11 +36,11 @@ const StyledItem = ({ to, icon, text }: StyledItemProps) => {
 
     return (
         <Item>
+            <ActiveIndicator side='left' isActive={isActive} />
             <StyledLink to={to} $isActive={isActive}>
                 {icon}
                 <p>{text} </p>
             </StyledLink>
-            <ActiveIndicator isActive={isActive} />
         </Item>
     );
 }
