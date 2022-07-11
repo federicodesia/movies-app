@@ -1,5 +1,5 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { Title } from '../../styles/styles';
+import { Title } from '../../styles/text';
 import { StyledArrow, StyledHoverCardContent, StyledTooltipContent } from './style';
 
 const delayDuration = 100

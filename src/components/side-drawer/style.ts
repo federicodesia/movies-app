@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
+import { SectionText, Text } from "../../styles/text"
 
 export const Wrapper = styled.div`
-    height: 100%;
+    background-color: ${props => props.theme.menu.backgroundColor};
+
     width: 100%;
     max-width: 240px;
-    background-color: #1B1C22;
-    color: rgba(255, 255, 255, 0.75);
 
     display: flex;
     flex-direction: column;
@@ -19,19 +19,7 @@ export const Wrapper = styled.div`
 
 export const HeaderWrapper = styled.div`
     display: flex;
-    margin: 8px 32px;
-`
-
-export const Header = styled.h1`
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    text-transform: uppercase;
-`
-
-export const LightHeader = styled(Header)`
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.75);
+    margin: 16px 32px;
 `
 
 export const List = styled.ul`
@@ -45,17 +33,11 @@ export const Item = styled.li`
     align-items: center;
 `
 
-export const ListTitle = styled.p`
+export const ListTitle = styled(SectionText)`
     margin: 16px 32px;
-    
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
 `
 
-export const StyledLink = styled(Link) <{
-    $isActive?: boolean
-}>`
+export const StyledLink = styled(Link)<{ $isActive?: boolean }>`
     flex: 1;
     text-decoration: none;
     color: inherit;
@@ -64,23 +46,29 @@ export const StyledLink = styled(Link) <{
     align-items: center;
     gap: 16px;
 
-    padding: 0px 16px;
+    padding: 12px 16px;
     margin: 0px 16px;
     border-radius: 12px;
-    
-    font-size: 13px;
+
+    color: ${props => props.theme.textColor};
     transition: all ease 300ms;
 
     &:hover {
-        background-color: rgba(156, 113, 252, 0.03);
+        background-color: ${props => props.theme.menu.hoverColor};
     }
 
     ${props => props.$isActive && css`
-        background-color: rgba(156, 113, 252, 0.05);
-        color: #9C71FC;
+        background-color: ${props => props.theme.menu.activeColor};
+        color: ${props => props.theme.primaryColor};
 
         &:hover {
-            background-color: rgba(156, 113, 252, 0.08);
+            background-color: ${props => props.theme.menu.activeHoverColor};
         }
+    `}
+`
+
+export const StyledLinkText = styled(Text)<{ $isActive?: boolean }>`
+    ${props => props.$isActive && css`
+        color: ${props => props.theme.primaryColor};
     `}
 `

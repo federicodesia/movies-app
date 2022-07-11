@@ -4,9 +4,16 @@ import { FiBell } from "react-icons/fi"
 import { Wrapper, Options, DotIconWrapper } from "./style"
 import { IconContext } from "react-icons"
 import { DotIndicator } from "../../styles/dot-indicator"
+import { useContext } from "react"
+import { ThemeContext } from "styled-components"
 
 const NavBar = () => {
-    return <IconContext.Provider value={{ color: 'white', size: '20px' }}>
+    const themeContext = useContext(ThemeContext)
+    
+    return <IconContext.Provider value={{
+        size: '20px',
+        color: themeContext.iconColor
+    }}>
         <Wrapper>
             <div>
 

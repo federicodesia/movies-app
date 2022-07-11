@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CircleButton = styled.div`
-    background-color: #9C71FC;
+    background-color: ${props => props.theme.primaryColor};
     color: white;
     height: 42px;
     width: 42px;

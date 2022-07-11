@@ -4,7 +4,7 @@ const ActiveIndicator = styled.div<{
     isActive?: boolean
     side: 'left' | 'right'
 }>`
-    background-color: #9C71FC;
+    background-color: ${props => props.theme.primaryColor};
     width: 4px;
     height: 0px;
     opacity: 0;

@@ -1,9 +1,10 @@
 import { Item, List, StyledDotIndicator, Wrapper, PositionRelative } from "./style"
 import { MdAdd } from "react-icons/md"
 import { CircleIconButton, CircleImageButton } from "../../styles/circle-button"
-import { Row, Column, Text, Title } from "../../styles/styles"
+import { Row, Column } from "../../styles/styles"
 import ActiveIndicator from "../../styles/active-indicator"
 import { HoverCard, Tooltip } from "../tooltip"
+import { Title, Text } from "../../styles/text"
 
 const FriendsDrawer = () => {
     return <Wrapper>

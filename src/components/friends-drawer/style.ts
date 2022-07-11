@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DotIndicator } from "../../styles/dot-indicator";
 
 export const Wrapper = styled.div`
-    background-color: #1B1C22;
+    background-color: ${props => props.theme.menu.backgroundColor};
     
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ export const PositionRelative = styled.div`
 `
 
 export const StyledDotIndicator = styled(DotIndicator)`
-    background-color: #B5EDB3;
-    border-color: #1B1C22;
+    background-color: ${props => props.theme.onlineColor};
+    border-color: ${props => props.theme.menu.backgroundColor};
     margin: 5px;
 `

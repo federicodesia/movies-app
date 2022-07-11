@@ -12,9 +12,9 @@ export const DotIndicator = styled.div<{
     box-sizing: content-box;
     height: 8px;
     width: 8px;
-    background-color: #9C71FC;
+    background-color: ${props => props.theme.primaryColor};
     border-radius: 50%;
-    border: 3px solid #222329;
+    border: 3px solid ${props => props.theme.backgroundColor};
 
     opacity: 0;
     transition: all ease 300ms;

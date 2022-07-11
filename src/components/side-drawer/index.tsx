@@ -1,10 +1,11 @@
-import { Wrapper, HeaderWrapper, Header, LightHeader, List, Item, ListTitle, StyledLink } from "./style";
+import { Wrapper, HeaderWrapper, List, Item, ListTitle, StyledLink, StyledLinkText } from "./style";
 
 import { HiOutlineHome, HiOutlineLogout } from "react-icons/hi"
 import { TbHeart, TbCalendarMinus, TbUser, TbUsers, TbSettings } from "react-icons/tb"
 import { useMatch, useResolvedPath } from "react-router-dom";
 import { IconContext } from "react-icons";
 import ActiveIndicator from "../../styles/active-indicator";
+import { Header } from "../../styles/text";
 
 interface StyledListProps {
     title: string,
@@ -39,7 +40,7 @@ const StyledItem = ({ to, icon, text }: StyledItemProps) => {
             <ActiveIndicator side='left' isActive={isActive} />
             <StyledLink to={to} $isActive={isActive}>
                 {icon}
-                <p>{text} </p>
+                <StyledLinkText $isActive={isActive}>{text} </StyledLinkText>
             </StyledLink>
         </Item>
     );
@@ -50,7 +51,7 @@ function SideDrawer() {
         <Wrapper>
             <HeaderWrapper>
                 <Header>MOVIES</Header>
-                <LightHeader>APP</LightHeader>
+                <Header variant='light'>APP</Header>
             </HeaderWrapper>
 
             <StyledList title='Menu' items={[

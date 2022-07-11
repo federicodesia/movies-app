@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  background-color: #222329;
+  background-color: ${props => props.theme.backgroundColor};
   height: 100vh;
 `
 
@@ -17,5 +17,4 @@ export const RoutesWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 `

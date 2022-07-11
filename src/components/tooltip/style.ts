@@ -29,7 +29,7 @@ const animationData = css`
 `
 
 export const StyledTooltipContent = styled(TooltipPrimitive.Content)`
-  background-color: #131417;
+  background-color: ${props => props.theme.tooltipBackgroundColor};
   box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
   padding: 16px 20px;
   border-radius: 8px;
@@ -53,5 +53,5 @@ export const StyledHoverCardContent = styled(StyledTooltipContent)`
 `
 
 export const StyledArrow = styled(TooltipPrimitive.Arrow)`
-    fill: #131417;
+    fill: ${props => props.theme.tooltipBackgroundColor};
 `
