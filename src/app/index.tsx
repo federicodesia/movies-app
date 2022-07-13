@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Wrapper, Content, RoutesWrapper } from './style';
 import SideDrawer from '../components/side-drawer';
 import NavBar from '../components/nav-bar';
-import HomeRoute from '../routes/home';
+import HomeRoute from '../pages/home';
 import FriendsDrawer from '../components/friends-drawer';
 import { ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';

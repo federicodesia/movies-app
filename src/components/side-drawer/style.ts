@@ -4,9 +4,9 @@ import { SectionText, Text } from "../../styles/text"
 
 export const Wrapper = styled.div`
     background-color: ${props => props.theme.menu.backgroundColor};
-
-    width: 100%;
-    max-width: 240px;
+    
+    width: 240px;
+    flex-shrink: 0;
 
     display: flex;
     flex-direction: column;
