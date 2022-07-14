@@ -7,10 +7,13 @@ import FriendsDrawer from '../components/friends-drawer';
 import { ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { lightTheme, darkTheme } from '../styles/themes';
+import { useAppSelector } from '../redux/hooks';
 
 function App() {
+  const themeMode = useAppSelector((state) => state.theme.mode)
+
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
       <TooltipProvider>
         <Wrapper>
           <SideDrawer />
