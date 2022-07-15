@@ -7,6 +7,15 @@ const base = css`
     transition: color ease 300ms;
 `
 
+const maxLines = (n: number) => css`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: ${n};
+            line-clamp: ${n}; 
+    -webkit-box-orient: vertical;
+`
+
 export const Header = styled.h1<{
     variant?: 'light' 
 }>`
@@ -19,17 +28,23 @@ export const Header = styled.h1<{
     };
 `
 
-export const Title = styled.h3`
+export const Title = styled.h3<{
+    maxLines?: number
+}>`
     ${base}
     font-size: 13.5px;
     font-weight: 500;
     color: ${props => props.theme.titleColor};
+    ${props => props.maxLines && maxLines(props.maxLines)}
 `
 
-export const Text = styled.p`
+export const Text = styled.p<{
+    maxLines?: number
+}>`
     ${base}
     font-size: 12.5px;
     font-weight: 500;
+    ${props => props.maxLines && maxLines(props.maxLines)}
 `
 
 export const SectionText = styled.p`

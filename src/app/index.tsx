@@ -7,10 +7,18 @@ import FriendsDrawer from '../components/friends-drawer';
 import { ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { lightTheme, darkTheme } from '../styles/themes';
-import { useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useEffect } from 'react';
+import { fetchGenres, fetchPopularMovies } from '../redux/slices/movies-slice';
 
 function App() {
+  const dispatch = useAppDispatch()
   const themeMode = useAppSelector((state) => state.theme.mode)
+
+  useEffect(() => {
+    dispatch(fetchGenres())
+    dispatch(fetchPopularMovies())
+  }, [dispatch])
 
   return (
     <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
