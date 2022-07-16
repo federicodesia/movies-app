@@ -4,23 +4,23 @@ import { Genre, Movie } from "../../services/movies-service/dto";
 
 interface MoviesState {
     genres: Genre[]
-    popular: Movie[];
-};
+    popular: Movie[]
+}
 
 const initialState: MoviesState = {
     genres: [],
-    popular: [],
-};
+    popular: []
+}
 
 export const fetchGenres = createAsyncThunk(
     'movies/fetchGenres',
     async () => await moviesService.getGenres(),
-);
+)
 
 export const fetchPopularMovies = createAsyncThunk(
     'movies/fetchPopularMovies',
     async () => (await moviesService.getPopularMovies())?.results,
-);
+)
 
 const moviesSlice = createSlice({
     name: 'movies',

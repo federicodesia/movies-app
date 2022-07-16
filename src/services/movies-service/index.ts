@@ -15,14 +15,14 @@ const getMovieImageUrl = (movie: Movie) => {
     return `https://image.tmdb.org/t/p/w500${path}`
 }
 
-const getPopularMovies = async () => {
-    const response = await api.get<MovieList>(`/movie/popular`);
-    return handleResponse(response);
-}
-
 const getGenres = async () => {
     const response = await api.get<GenreList>(`/genre/movie/list`);
     return handleResponse(response)?.genres;
+}
+
+const getPopularMovies = async () => {
+    const response = await api.get<MovieList>(`/movie/popular`);
+    return handleResponse(response);
 }
 
 const handleResponse = <T>(response: AxiosResponse<T, any>) => {

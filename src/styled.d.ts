@@ -7,6 +7,7 @@ declare module 'styled-components' {
 
         backgroundColor: string
         tooltipBackgroundColor: string
+        progressBackgroundColor: string
         
         iconColor: string
         titleColor: string
