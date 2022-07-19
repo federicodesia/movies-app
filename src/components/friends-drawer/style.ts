@@ -40,3 +40,10 @@ export const StyledDotIndicator = styled(DotIndicator)`
     border-color: ${props => props.theme.menu.backgroundColor};
     margin: 5px;
 `
+
+export const ProfilePicture = styled.img`
+    height: 42px;
+    width: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+`

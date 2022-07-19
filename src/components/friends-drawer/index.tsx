@@ -1,6 +1,6 @@
-import { Item, List, StyledDotIndicator, Wrapper, PositionRelative } from "./style"
+import { Item, List, StyledDotIndicator, Wrapper, PositionRelative, ProfilePicture } from "./style"
 import { MdAdd } from "react-icons/md"
-import { CircleIconButton, CircleImageButton } from "../../styles/circle-button"
+import { CircleButton, CircleIconButton, CircleImageButton } from "../../styles/button"
 import { Row, Column } from "../../styles/styles"
 import ActiveIndicator from "../../styles/active-indicator"
 import { HoverCard, Tooltip } from "../tooltip"
@@ -28,13 +28,15 @@ const FriendsDrawer = () => {
                             side='left'
                             trigger={
                                 <PositionRelative>
-                                    <CircleImageButton src="https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg" />
+                                    <CircleImageButton>
+                                        <img src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
+                                    </CircleImageButton>
                                     <StyledDotIndicator isActive={index < 3} />
                                 </PositionRelative>
                             }
                             content={
                                 <Row gap='16px' >
-                                    <CircleImageButton src="https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg" />
+                                    <ProfilePicture src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
 
                                     <Column gap='4px'>
                                         <Title>Federico De Sía</Title>

@@ -12,13 +12,7 @@ export const Wrapper = styled.div`
 `
 
 export const Content = styled.div`
+  position: relative;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-
   overflow: overlay;
-`
-
-export const RoutesWrapper = styled.div`
-  flex: 1;
 `
