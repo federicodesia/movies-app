@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { GenreList, Movie, MovieList } from "./dto";
+import { GenreList, MovieDetail, MovieList } from "./dto";
 
 const apiKey = import.meta.env.VITE_MOVIES_API_KEY
 
@@ -10,18 +10,18 @@ const api = axios.create({
     }
 })
 
-const getMovieImageUrl = (movie: Movie) => {
-    const path = movie.backdrop_path ?? movie.poster_path
-    return `https://image.tmdb.org/t/p/w500${path}`
-}
-
 const getGenres = async () => {
     const response = await api.get<GenreList>(`/genre/movie/list`);
-    return handleResponse(response)?.genres;
+    return handleResponse(response);
 }
 
 const getPopularMovies = async () => {
     const response = await api.get<MovieList>(`/movie/popular`);
+    return handleResponse(response);
+}
+
+const getMovieDetails = async (id: number) => {
+    const response = await api.get<MovieDetail>(`/movie/${id}`);
     return handleResponse(response);
 }
 
@@ -31,7 +31,7 @@ const handleResponse = <T>(response: AxiosResponse<T, any>) => {
 }
 
 export const moviesService = {
-    getMovieImageUrl,
     getGenres,
-    getPopularMovies
+    getPopularMovies,
+    getMovieDetails
 };

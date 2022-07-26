@@ -14,7 +14,7 @@ const initialState: MoviesState = {
 
 export const fetchGenres = createAsyncThunk(
     'movies/fetchGenres',
-    async () => await moviesService.getGenres(),
+    async () => (await moviesService.getGenres())?.genres,
 )
 
 export const fetchPopularMovies = createAsyncThunk(

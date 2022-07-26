@@ -1,4 +1,5 @@
 import { BsPlayCircle } from "react-icons/bs"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Backdrop = styled.div`
@@ -21,12 +22,15 @@ export const Wrapper = styled.li`
     padding: 0;
     width: 185px;
     flex-shrink: 0;
+`
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
 
     display: flex;
     flex-direction: column;
     gap: 16px;
-    
-    cursor: pointer;
 
     &:hover ${Backdrop} {
         opacity: 1

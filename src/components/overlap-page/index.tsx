@@ -1,22 +1,22 @@
 import { ReactNode } from "react"
-import NavBar from "../../components/nav-bar"
-import { PositionAbsolute, BackdropWrapper, HeaderWrapper, HeaderContent, PageContentWrapper, HeaderChildren } from "./style"
+import NavBar from "../nav-bar"
+import { PositionAbsolute, HeaderWrapper, HeaderContent, PageContentWrapper, HeaderChildren, HeaderBackdrop } from "./style"
 
-interface PageProps {
-    header?: {
+interface OverlapPageProps {
+    header: {
         backdrop: ReactNode
         children: ReactNode
     }
     children: ReactNode
 }
 
-const Page = ({ header, children }: PageProps) => {
+const OverlapPage = ({ header, children }: OverlapPageProps) => {
     return <PositionAbsolute>
         {
-            header && <HeaderWrapper>
-                <BackdropWrapper>
+            <HeaderWrapper>
+                <HeaderBackdrop>
                     {header.backdrop}
-                </BackdropWrapper>
+                </HeaderBackdrop>
 
                 <HeaderContent>
                     <NavBar />
@@ -33,4 +33,4 @@ const Page = ({ header, children }: PageProps) => {
     </PositionAbsolute>
 }
 
-export default Page
+export default OverlapPage
