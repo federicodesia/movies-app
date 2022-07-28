@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { OutlineTextButton } from "../../styles/button";
+import { Column } from "../../styles/styles";
 
 export const HeaderWrapper = styled.div`
     height: 100%;
-    padding: 48px 0px;
-    max-width: 1200px;
-    
-    margin: auto;
     align-items: flex-end;
-    justify-content: space-between;
+    padding: 48px 0px;
+
+    max-width: 1200px;
+    margin: auto;
 
     display: grid;
     grid-template-areas: 'headerLeft headerCenter headerRight';
@@ -16,30 +15,17 @@ export const HeaderWrapper = styled.div`
     grid-auto-flow: column;
 `
 
-export const GridWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    padding: 0px 48px;
-`
-
-export const Grid = styled.div`
-    max-width: 1200px;
-
-    display: grid;
-    grid-template-areas: 
-        'poster main cast'
-        'poster storyline cast';
-    grid-template-columns: auto 1fr 220px;
-
-    row-gap: 48px;
-    column-gap: 64px;
-`
-
 export const GridArea = styled.div<{
     area: string
 }>`
     grid-area: ${props => props.area};
-    //border: 1px solid black;
+`
+
+export const MovieContent = styled.div`
+    box-sizing: content-box;
+    max-width: 1200px;
+    padding: 0px 48px;
+    margin: auto;
 `
 
 export const PosterCard = styled.img`
@@ -50,7 +36,6 @@ export const PosterCard = styled.img`
     border-radius: 12px;
 `
 
-export const GenreChip = styled(OutlineTextButton)`
-    height: 36px;
-    font-size: 11px;
+export const Section = styled(Column)`
+    gap: 16px;
 `

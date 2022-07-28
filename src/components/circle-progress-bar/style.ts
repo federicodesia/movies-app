@@ -31,7 +31,7 @@ export const Circle = styled.svg<{
 `
 
 export const Background = styled.circle`
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: ${props => props.theme.progressBackgroundColor};
 `
 
 export const Progress = styled.circle<{

@@ -14,6 +14,11 @@ declare module 'styled-components' {
         textColor: string
         lightTextColor: string
 
+        outlineButton: {
+            borderColor: string
+            hoverColor: string
+        }
+
         menu: {
             backgroundColor: string
             hoverColor: string

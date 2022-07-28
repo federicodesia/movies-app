@@ -44,7 +44,9 @@ export interface MovieDetail {
     overview?: string;
     popularity?: number;
     poster_path?: string;
-    production_companies: ProductionCompany[];
+    production_companies?: ProductionCompany[];
+    production_countries?: ProductionCountry[];
+    spoken_languages?: SpokenLanguage[];
     release_date?: string;
     revenue?: number;
     runtime?: number;
@@ -61,6 +63,16 @@ export interface ProductionCompany {
     id?: number;
     logo_path?: string;
     origin_country?: string;
+}
+
+export interface ProductionCountry {
+    iso_3166_1?: string;
+    name?: string;
+}
+
+export interface SpokenLanguage {
+    iso_639_1?: string;
+    name?: string;
 }
 
 export interface MovieCredits {

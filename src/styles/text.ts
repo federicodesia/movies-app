@@ -38,6 +38,11 @@ export const Title = styled.h3<{
     ${props => props.maxLines && maxLines(props.maxLines)}
 `
 
+export const SectionTitle = styled(Title)`
+    text-transform: uppercase;
+    font-weight: 600;
+`
+
 export const Text = styled.p<{
     maxLines?: number
 }>`

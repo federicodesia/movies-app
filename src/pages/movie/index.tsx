@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { imagesService } from "../../services/images-service";
 import { moviesService } from "../../services/movies-service";
 import { Movie, MovieCredits, MovieDetail } from "../../services/movies-service/dto";
-import { Header, Title, Text, Paragraph } from "../../styles/text";
+import { Header, Title, Text, Paragraph, SectionTitle } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page"
-import { HeaderWrapper, Grid, GridArea, PosterCard, GridWrapper, GenreChip } from "./style";
-import { Column, Row } from "../../styles/styles";
+import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section } from "./style";
+import { Column, Container, Row } from "../../styles/styles";
 import { OutlineIconButton } from "../../styles/button";
 import { MdFavorite, MdShare } from "react-icons/md"
 import { TextIconButton, OutlineTextIconButton } from "../../components/text-icon-button";
@@ -15,6 +15,8 @@ import { toHoursAndMinutes } from "../../utils/date";
 import CircleProgressBar from "../../components/circle-progress-bar";
 import HorizontalMovieList from "../../components/horizontal-movie-list";
 import CastItem from "../../components/cast-item";
+import { Chip } from "../../styles/chip";
+import { Table, TableBody, TableRow, TableData, TableHeader } from "../../styles/table";
 
 const MoviePage = () => {
     const { id } = useParams();
@@ -43,8 +45,7 @@ const MoviePage = () => {
     if (!data) return <></>
 
     const { details, credits, similar } = data
-    const { backdrop_path, poster_path, title, genres, release_date, runtime, overview, vote_average, vote_count } = details ?? {}
-    const runHoursMinutes = runtime && toHoursAndMinutes(runtime, false)
+    const { backdrop_path, poster_path, title, genres, release_date, runtime, overview, vote_average, vote_count, production_countries, spoken_languages } = details ?? {}
 
     const compactFormatter = Intl.NumberFormat('en', { notation: 'compact' })
 
@@ -78,15 +79,15 @@ const MoviePage = () => {
 
             <GridArea area='headerCenter'>
                 <Row justifyContent='center'>
-                    <OutlineTextIconButton icon={<IoPlay />} text='Trailer' />
+                    <OutlineTextIconButton icon={<IoPlay />} iconColor='primary' text='Trailer' />
                 </Row>
             </GridArea>
         </HeaderWrapper>
     }}>
         <Column gap='64px'>
-            <GridWrapper>
-                <Grid>
-                    <GridArea area='poster'>
+            <MovieContent>
+                <Row gap='64px'>
+                    <Container width='200px'>
                         <Column gap='48px'>
                             <PosterCard src={imagesService.getPosterUrl(poster_path)} />
 
@@ -96,59 +97,100 @@ const MoviePage = () => {
                                 </Header>
 
                                 <Header variant='thin'>
-                                    {runHoursMinutes && `${runHoursMinutes.hours}H ${runHoursMinutes.minutes}MIN`}
+                                    {runtime && toHoursAndMinutes(runtime).toUpperCase()}
                                 </Header>
                             </Column>
                         </Column>
-                    </GridArea>
+                    </Container>
 
-                    <GridArea area='main'>
-                        <Column gap='18px' justifyContent='space-between'>
-                            <Header>{title}</Header>
+                    <Container flex={1}>
+                        <Row gap='64px' wrap='wrap'>
 
-                            <Row gap='8px'>
-                                {
-                                    genres?.slice(0, 3).map((genre, index) => {
-                                        return <GenreChip key={`${genre.id} ${index}`}>
-                                            {genre.name}
-                                        </GenreChip>
-                                    })
-                                }
-                            </Row>
+                            <Container flex={1} minWidth='350px'>
+                                <Column gap='48px'>
+                                    <Column gap='18px'>
+                                        <Header>{title}</Header>
 
-                            <Row gap='8px'>
-                                <TextIconButton icon={<IoPlay />} text='Watch' />
+                                        <Row gap='8px' wrap='wrap'>
+                                            {
+                                                genres?.slice(0, 3).map((genre, index) => {
+                                                    return <Chip key={`${genre.id} ${index}`}>
+                                                        {genre.name}
+                                                    </Chip>
+                                                })
+                                            }
+                                        </Row>
 
-                                <OutlineIconButton>
-                                    <MdFavorite size='16px' />
-                                </OutlineIconButton>
+                                        <Row gap='8px'>
+                                            <TextIconButton icon={<IoPlay />} text='Watch' />
 
-                                <OutlineIconButton>
-                                    <MdShare size='16px' />
-                                </OutlineIconButton>
-                            </Row>
-                        </Column>
-                    </GridArea>
+                                            <OutlineIconButton>
+                                                <MdFavorite size='16px' />
+                                            </OutlineIconButton>
 
-                    <GridArea area='storyline'>
-                        <Column gap='16px'>
-                            <Title>STORYLINE</Title>
-                            <Paragraph>{overview}</Paragraph>
-                        </Column>
-                    </GridArea>
+                                            <OutlineIconButton>
+                                                <MdShare size='16px' />
+                                            </OutlineIconButton>
+                                        </Row>
+                                    </Column>
 
-                    <GridArea area='cast'>
-                        <Column gap='16px'>
-                            <Title>CAST</Title>
-                            {
-                                credits?.cast?.slice(0, 5).map((item, index) => {
-                                    return <CastItem cast={item} key={`${item.id} ${index}`} />
-                                })
-                            }
-                        </Column>
-                    </GridArea>
-                </Grid>
-            </GridWrapper>
+                                    <Section>
+                                        <SectionTitle>STORYLINE</SectionTitle>
+                                        <Paragraph>{overview}</Paragraph>
+                                    </Section>
+
+                                    <Section>
+                                        <SectionTitle>DETAILS</SectionTitle>
+
+                                        <Table>
+                                            <TableBody>
+                                                <TableRow>
+                                                    <TableHeader>Runtime</TableHeader>
+                                                    <TableData>{runtime && toHoursAndMinutes(runtime)}</TableData>
+                                                </TableRow>
+
+                                                <TableRow>
+                                                    <TableHeader>Release date</TableHeader>
+                                                    <TableData>
+                                                        {
+                                                            release_date && new Date(release_date).toLocaleDateString('en', {
+                                                                day: 'numeric',
+                                                                month: 'long',
+                                                                year: 'numeric'
+                                                            })
+                                                        }
+                                                    </TableData>
+                                                </TableRow>
+
+                                                <TableRow>
+                                                    <TableHeader>Production countries</TableHeader>
+                                                    <TableData> {production_countries?.map(country => country.name).join(', ')} </TableData>
+                                                </TableRow>
+
+                                                <TableRow>
+                                                    <TableHeader>Languages</TableHeader>
+                                                    <TableData> {spoken_languages?.map(language => language.name).join(', ')} </TableData>
+                                                </TableRow>
+                                            </TableBody>
+                                        </Table>
+                                    </Section>
+                                </Column>
+                            </Container>
+
+                            <Container width='220px'>
+                                <Section>
+                                    <SectionTitle>CAST</SectionTitle>
+                                    {
+                                        credits?.cast?.slice(0, 5).map((item, index) => {
+                                            return <CastItem cast={item} key={`${item.id} ${index}`} />
+                                        })
+                                    }
+                                </Section>
+                            </Container>
+                        </Row>
+                    </Container>
+                </Row>
+            </MovieContent>
 
             <HorizontalMovieList header='More like this' movies={similar?.slice(0, 12) ?? []} />
         </Column>

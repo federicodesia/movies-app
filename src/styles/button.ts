@@ -5,6 +5,7 @@ const defaultSize = '48px'
 const BaseButton = styled.button<{
     size?: string
 }>`
+    box-sizing: border-box;
     font-family: inherit;
     height: ${props => props.size ?? defaultSize};
     border-radius: ${props => props.size ?? defaultSize};
@@ -18,13 +19,13 @@ export const Button = styled(BaseButton)`
 `
 
 export const OutlineButton = styled(BaseButton)`
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid ${props => props.theme.outlineButton.borderColor};;
     background-color: transparent;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.titleColor};
 
     transition: all ease 300ms;
     :hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: ${props => props.theme.outlineButton.hoverColor};
     }
 `
 
@@ -40,11 +41,13 @@ export const TextButton = styled(Button)`${text}`
 export const OutlineTextButton = styled(OutlineButton)`${text}`
 
 export const CircleButton = styled(Button)`
+    padding: 0px;
     width: ${props => props.size ?? defaultSize};
     border-radius: 50%;
 `
 
 export const OutlineCircleButton = styled(OutlineButton)`
+    padding: 0px;
     width: ${props => props.size ?? defaultSize};
     border-radius: 50%;
 `
