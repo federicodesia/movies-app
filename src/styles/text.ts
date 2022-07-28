@@ -17,11 +17,11 @@ const maxLines = (n: number) => css`
 `
 
 export const Header = styled.h1<{
-    variant?: 'light' 
+    variant?: 'light' | 'thin'
 }>`
     ${base}
     font-size: 18px;
-    font-weight: 600;
+    font-weight: ${props => props.variant === 'thin' ? 400 : 600};
     color: ${props => props.variant === 'light'
         ? props.theme.lightTextColor
         : props.theme.titleColor
@@ -43,8 +43,13 @@ export const Text = styled.p<{
 }>`
     ${base}
     font-size: 12.5px;
-    font-weight: 500;
+    font-weight: 400;
     ${props => props.maxLines && maxLines(props.maxLines)}
+`
+
+export const Paragraph = styled(Text)`
+    font-size: 13.5px;
+    line-height: 1.7;
 `
 
 export const SectionText = styled.p`

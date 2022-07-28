@@ -25,6 +25,16 @@ const getMovieDetails = async (id: number) => {
     return handleResponse(response);
 }
 
+const getMovieCredits = async (id: number) => {
+    const response = await api.get<MovieDetail>(`/movie/${id}/credits`);
+    return handleResponse(response);
+}
+
+const getSimilarMovies = async (id: number) => {
+    const response = await api.get<MovieList>(`/movie/${id}/similar`);
+    return handleResponse(response);
+}
+
 const handleResponse = <T>(response: AxiosResponse<T, any>) => {
     if (response.status >= 200 || response.status < 300) return response.data;
     return undefined;
@@ -33,5 +43,7 @@ const handleResponse = <T>(response: AxiosResponse<T, any>) => {
 export const moviesService = {
     getGenres,
     getPopularMovies,
-    getMovieDetails
+    getMovieDetails,
+    getMovieCredits,
+    getSimilarMovies
 };

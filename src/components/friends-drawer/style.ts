@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { IconButton, CircleImageButton } from "../../styles/button";
 import { DotIndicator } from "../../styles/dot-indicator";
 
 export const Wrapper = styled.div`
@@ -16,7 +17,7 @@ export const List = styled.ul`
 
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 
     padding: 24px 0px;
     overflow-y: overlay;
@@ -40,6 +41,19 @@ export const StyledDotIndicator = styled(DotIndicator)`
     border-color: ${props => props.theme.menu.backgroundColor};
     margin: 5px;
 `
+
+const hoverButton = css`
+    height: 44px;
+    width: 44px;
+
+    transition: all ease 300ms;
+    &:hover {
+        border-radius: 16px;
+    }
+`
+
+export const HoverIconButton = styled(IconButton)`${hoverButton}`
+export const HoverImageButton = styled(CircleImageButton)`${hoverButton}`
 
 export const ProfilePicture = styled.img`
     height: 42px;

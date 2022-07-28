@@ -62,3 +62,24 @@ export interface ProductionCompany {
     logo_path?: string;
     origin_country?: string;
 }
+
+export interface MovieCredits {
+    id?: number;
+    cast?: Cast[];
+    crew?: Cast[];
+}
+
+export interface Cast {
+    adult?: boolean;
+    gender?: number;
+    id?: number;
+    name?: string;
+    original_name?: string;
+    popularity?: number;
+    profile_path?: string;
+    cast_id?: number;
+    character?: string;
+    credit_id?: string;
+    order?: number;
+    job?: string;
+}

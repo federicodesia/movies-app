@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const headerHeight = '350px';
-const overlap = '100px';
+const overlap = '0px';
 
 export const PositionAbsolute = styled.div`
     position: absolute;
@@ -48,7 +48,7 @@ export const PageContentWrapper = styled.div`
     top: ${headerHeight};
     left: 0;
     right: 0;
-    bottom: 0;
+    
     margin-top: -${overlap};
     padding: 48px 0px;
 `
