@@ -1,31 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 function useMediaQuery(query: string) {
 
-    const getMatches = (query: string) => {
-        // Prevents SSR issues
-        if (typeof window === 'undefined') return false
-        return window.matchMedia(query).matches
-    }
+    const mediaQuery = useMemo(
+        () => {
+            // Prevents SSR issues
+            if (typeof window === 'undefined') return false
+            return window.matchMedia(query.replace('@media ', ''))
+        },
+        [query]
+    )
 
-    const [matches, setMatches] = useState(getMatches(query))
-    const handleChange = () => setMatches(getMatches(query))
+    const getMatches = () => mediaQuery && mediaQuery.matches
+    const [matches, setMatches] = useState(getMatches())
 
     useEffect(() => {
-        const matchMedia = window.matchMedia(query)
+        const handleChange = () => setMatches(getMatches())
 
         // Triggered at the first client-side load and if query changes
         handleChange()
 
         // Safari < 14 can't use addEventListener on a MediaQueryList
-        if (matchMedia.addListener) matchMedia.addListener(handleChange)
-        else matchMedia.addEventListener('change', handleChange)
+        if(mediaQuery) {
+            if (mediaQuery.addListener) mediaQuery.addListener(handleChange)
+            else mediaQuery.addEventListener('change', handleChange)
+        }
 
         return () => {
-            if (matchMedia.removeListener) matchMedia.removeListener(handleChange)
-            else matchMedia.removeEventListener('change', handleChange)
+            if(mediaQuery){
+                if (mediaQuery.removeListener) mediaQuery.removeListener(handleChange)
+                else mediaQuery.removeEventListener('change', handleChange)
+            }
         }
-    }, [query])
+    }, [mediaQuery])
 
     return matches
 }

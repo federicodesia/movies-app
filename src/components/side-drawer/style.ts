@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { SectionText, Text } from "../../styles/text"
+import { down } from "../../styles/breakpoints";
+
+const collapsed = down('xxl')
 
 export const Wrapper = styled.div`
     background-color: ${props => props.theme.menu.backgroundColor};
@@ -14,11 +17,15 @@ export const Wrapper = styled.div`
     margin: 0px;
     gap: 12px;
 
+    overflow-x: hidden;
     overflow-y: overlay;
+
+    ${collapsed} {
+        width: 92px;
+    }
 `
 
 export const HeaderWrapper = styled.div`
-    display: flex;
     margin: 16px 32px;
 `
 
@@ -28,30 +35,35 @@ export const List = styled.ul`
     list-style-type: none;
 `
 
+export const ListTitle = styled(SectionText)`
+    margin: 16px 32px;
+
+    ${collapsed} {
+        margin: 16px 0px;
+        text-align: center;
+    }
+`
+
 export const Item = styled.li`
     display: flex;
     align-items: center;
+
+    padding: 0px 24px;
+    padding-left: 0px;
+    gap: 20px;
 `
 
-export const ListTitle = styled(SectionText)`
-    margin: 16px 32px;
-`
-
-export const StyledLink = styled(Link)<{ $isActive?: boolean }>`
+export const StyledLink = styled(Link) <{ $isActive?: boolean }>`
     flex: 1;
     text-decoration: none;
-    color: inherit;
 
     display: flex;
     align-items: center;
-    gap: 16px;
+    overflow-x: hidden;
 
-    padding: 12px 16px;
-    margin: 0px 16px;
+    height: 44px;
     border-radius: 12px;
-
     color: ${props => props.theme.textColor};
-    transition: all ease 300ms;
 
     &:hover {
         background-color: ${props => props.theme.menu.hoverColor};
@@ -67,8 +79,27 @@ export const StyledLink = styled(Link)<{ $isActive?: boolean }>`
     `}
 `
 
-export const StyledLinkText = styled(Text)<{ $isActive?: boolean }>`
-    ${props => props.$isActive && css`
-        color: ${props => props.theme.primaryColor};
-    `}
+export const ItemIconWrapper = styled.div`
+    flex-shrink: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    padding: 0px 16px;
+
+    ${collapsed} {
+        padding: 0;
+        width: 44px;
+    }
+`
+
+export const StyledLinkText = styled(Text)`    
+    color: inherit;
+    line-height: inherit;
+
+    ${collapsed} {
+        opacity: 0;
+    }
 `

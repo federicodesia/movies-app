@@ -20,9 +20,11 @@ export const TableRow = styled.tr`
 `
 
 export const TableHeader = styled.th`
-    padding: 0px;
     width: 1px;
     white-space: nowrap;
+
+    padding: 0px;
+    padding-right: 32px;
 
     color: ${props => props.theme.titleColor};
     font-weight: 400;
@@ -30,6 +32,9 @@ export const TableHeader = styled.th`
 `
 
 export const TableData = styled.td`
-    padding: 0px 48px;
+    max-width: 0;
+    padding: 0px 16px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `

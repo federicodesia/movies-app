@@ -43,7 +43,7 @@ export const SectionTitle = styled(Title)`
     font-weight: 600;
 `
 
-export const Text = styled.p<{
+export const Text = styled.span<{
     maxLines?: number
 }>`
     ${base}
@@ -52,9 +52,14 @@ export const Text = styled.p<{
     ${props => props.maxLines && maxLines(props.maxLines)}
 `
 
-export const Paragraph = styled(Text)`
+export const Paragraph = styled.p<{
+    maxLines?: number
+}>`
+    ${base}
     font-size: 13.5px;
+    font-weight: 400;
     line-height: 1.7;
+    ${props => props.maxLines && maxLines(props.maxLines)}
 `
 
 export const SectionText = styled.p`

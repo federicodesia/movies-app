@@ -1,21 +1,38 @@
 import styled, { css } from "styled-components"
+import { Breakpoint, down } from "./breakpoints"
 
 export const Row = styled.div<{
     gap?: string
     alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
     justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
+    changeDirection?: Breakpoint
 }>`
     display: flex;
     flex-direction: row;
-    ${props => props.alignItems && css`align-items: ${props.alignItems}; `};
-    ${props => props.justifyContent && css`justify-content: ${props.justifyContent}; `};
-    ${props => props.gap && css`gap: ${props.gap}; `};
-    ${props => props.wrap && css`flex-wrap: ${props.wrap}; `};
+
+    ${props => css`
+        align-items: ${props.alignItems};
+        justify-content: ${props.justifyContent};
+        gap: ${props.gap};
+        flex-wrap: ${props.wrap};
+    `}
+
+    ${({ changeDirection }) => changeDirection && css`
+        ${down(changeDirection)} {
+            flex-direction: column;
+        }
+    `}
 `
 
 export const Column = styled(Row)`
     flex-direction: column;
+
+    ${({ changeDirection }) => changeDirection && css`
+        ${down(changeDirection)} {
+            flex-direction: row;
+        }
+    `}
 `
 
 export const Container = styled.div<{
@@ -28,13 +45,16 @@ export const Container = styled.div<{
     flex?: number
 }>`
     flex-shrink: 0;
-    flex: ${props => props.flex};
 
-    width: ${props => props.width};
-    min-width: ${props => props.minWidth};
-    max-width: ${props => props.maxWidth};
+    ${props => css`
+        flex: ${props.flex};
 
-    height: ${props => props.height};
-    min-height: ${props => props.minHeight};
-    max-height: ${props => props.maxHeight};
+        width: ${props.width};
+        min-width: ${props.minWidth};
+        max-width: ${props.maxWidth};
+
+        height: ${props.height};
+        min-height: ${props.minHeight};
+        max-height: ${props.maxHeight};
+    `}
 `

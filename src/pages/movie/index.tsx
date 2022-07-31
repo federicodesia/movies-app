@@ -5,7 +5,7 @@ import { moviesService } from "../../services/movies-service";
 import { Movie, MovieCredits, MovieDetail } from "../../services/movies-service/dto";
 import { Header, Title, Text, Paragraph, SectionTitle } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page"
-import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section } from "./style";
+import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section, CastSection } from "./style";
 import { Column, Container, Row } from "../../styles/styles";
 import { OutlineIconButton } from "../../styles/button";
 import { MdFavorite, MdShare } from "react-icons/md"
@@ -17,9 +17,16 @@ import HorizontalMovieList from "../../components/horizontal-movie-list";
 import CastItem from "../../components/cast-item";
 import { Chip } from "../../styles/chip";
 import { Table, TableBody, TableRow, TableData, TableHeader } from "../../styles/table";
+import useMediaQuery from "../../hooks/use-media-query";
+import { down } from "../../styles/breakpoints";
 
 const MoviePage = () => {
     const { id } = useParams();
+
+    const breakpoints = {
+        downMd: useMediaQuery(down('sm')),
+        downLg: useMediaQuery(down('md'))
+    }
 
     const [data, setData] = useState<{
         details?: MovieDetail
@@ -51,10 +58,9 @@ const MoviePage = () => {
 
     return <OverlapPage header={{
         backdrop: <img src={imagesService.getBackdropUrl(backdrop_path, 'original')} />,
-        children: <HeaderWrapper>
+        children: !breakpoints.downLg && <HeaderWrapper>
 
             <GridArea area='headerLeft'>
-
                 <Row gap='12px' alignItems='center'>
                     <CircleProgressBar
                         progress={vote_average ?? 0}
@@ -87,59 +93,55 @@ const MoviePage = () => {
         <Column gap='64px'>
             <MovieContent>
                 <Row gap='64px'>
-                    <Container width='200px'>
-                        <Column gap='48px'>
+
+                    {
+                        !breakpoints.downLg && <Column gap='48px'>
                             <PosterCard src={imagesService.getPosterUrl(poster_path)} />
 
                             <Column gap='4px'>
-                                <Header variant='thin'>
-                                    {release_date && new Date(release_date).getFullYear()}
-                                </Header>
-
-                                <Header variant='thin'>
-                                    {runtime && toHoursAndMinutes(runtime).toUpperCase()}
-                                </Header>
+                                <Header variant='thin'> {release_date && new Date(release_date).getFullYear()} </Header>
+                                <Header variant='thin'> {runtime && toHoursAndMinutes(runtime).toUpperCase()} </Header>
                             </Column>
                         </Column>
-                    </Container>
+                    }
 
                     <Container flex={1}>
-                        <Row gap='64px' wrap='wrap'>
+                        <Row gap='64px' changeDirection='lg'>
 
-                            <Container flex={1} minWidth='350px'>
-                                <Column gap='48px'>
-                                    <Column gap='18px'>
-                                        <Header>{title}</Header>
+                            <Column gap='48px'>
+                                <Column gap='18px'>
+                                    <Header>{title}</Header>
 
-                                        <Row gap='8px' wrap='wrap'>
-                                            {
-                                                genres?.slice(0, 3).map((genre, index) => {
-                                                    return <Chip key={`${genre.id} ${index}`}>
-                                                        {genre.name}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </Row>
+                                    <Row gap='8px' wrap='wrap'>
+                                        {
+                                            genres?.slice(0, 3).map((genre, index) => {
+                                                return <Chip key={`${genre.id} ${index}`}>
+                                                    {genre.name}
+                                                </Chip>
+                                            })
+                                        }
+                                    </Row>
 
-                                        <Row gap='8px'>
-                                            <TextIconButton icon={<IoPlay />} text='Watch' />
+                                    <Row gap='8px'>
+                                        <TextIconButton icon={<IoPlay />} text='Watch' />
 
-                                            <OutlineIconButton>
-                                                <MdFavorite size='16px' />
-                                            </OutlineIconButton>
+                                        <OutlineIconButton>
+                                            <MdFavorite size='16px' />
+                                        </OutlineIconButton>
 
-                                            <OutlineIconButton>
-                                                <MdShare size='16px' />
-                                            </OutlineIconButton>
-                                        </Row>
-                                    </Column>
+                                        <OutlineIconButton>
+                                            <MdShare size='16px' />
+                                        </OutlineIconButton>
+                                    </Row>
+                                </Column>
 
-                                    <Section>
-                                        <SectionTitle>STORYLINE</SectionTitle>
-                                        <Paragraph>{overview}</Paragraph>
-                                    </Section>
+                                <Section>
+                                    <SectionTitle>STORYLINE</SectionTitle>
+                                    <Paragraph>{overview}</Paragraph>
+                                </Section>
 
-                                    <Section>
+                                {
+                                    breakpoints.downLg && <Section>
                                         <SectionTitle>DETAILS</SectionTitle>
 
                                         <Table>
@@ -174,19 +176,17 @@ const MoviePage = () => {
                                             </TableBody>
                                         </Table>
                                     </Section>
-                                </Column>
-                            </Container>
+                                }
+                            </Column>
 
-                            <Container width='220px'>
-                                <Section>
-                                    <SectionTitle>CAST</SectionTitle>
-                                    {
-                                        credits?.cast?.slice(0, 5).map((item, index) => {
-                                            return <CastItem cast={item} key={`${item.id} ${index}`} />
-                                        })
-                                    }
-                                </Section>
-                            </Container>
+                            <CastSection>
+                                <SectionTitle>CAST</SectionTitle>
+                                {
+                                    credits?.cast?.slice(0, 5).map((item, index) => {
+                                        return <CastItem cast={item} key={`${item.id} ${index}`} />
+                                    })
+                                }
+                            </CastSection>
                         </Row>
                     </Container>
                 </Row>
