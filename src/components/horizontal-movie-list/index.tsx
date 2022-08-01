@@ -1,8 +1,9 @@
 import { Movie } from "../../services/movies-service/dto"
+import { Content } from "../../styles/content"
 import { Column } from "../../styles/styles"
 import { Header } from "../../styles/text"
 import MovieCard from "../movie-card"
-import { HeaderWrapper, HorizontalList } from "./style"
+import { HorizontalList } from "./style"
 
 interface MovieCardProps {
     header: string
@@ -13,9 +14,9 @@ interface MovieCardProps {
 const HorizontalMovieList = ({ header, showViewedPercentage, movies }: MovieCardProps) => {
 
     return <Column gap='24px'>
-        <HeaderWrapper>
+        <Content>
             <Header>{header}</Header>
-        </HeaderWrapper>
+        </Content>
 
         <HorizontalList>
             {

@@ -1,6 +1,9 @@
 import { BsPlayCircle } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { down } from "../../styles/breakpoints";
+
+const resize = down('sm')
 
 export const Backdrop = styled.div`
     position: absolute;
@@ -22,6 +25,10 @@ export const Wrapper = styled.li`
     padding: 0;
     width: 185px;
     flex-shrink: 0;
+
+    ${resize} {
+        width: 135px;
+    }
 `
 
 export const StyledLink = styled(Link)`
@@ -42,6 +49,10 @@ export const ImageWrapper = styled.div`
     height: 130px;
     border-radius: 16px;
     overflow: hidden;
+
+    ${resize} {
+        height: 165px;
+    }
 `
 
 export const Image = styled.img`

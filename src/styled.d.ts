@@ -4,6 +4,7 @@ declare module 'styled-components' {
     export interface DefaultTheme {
         primaryColor: string
         onlineColor: string
+        starColor: string,
 
         backgroundColor: string
         tooltipBackgroundColor: string

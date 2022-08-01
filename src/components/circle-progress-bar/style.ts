@@ -4,6 +4,7 @@ import { Title } from "../../styles/text"
 export const Wrapper = styled.div<{
     size: string
 }>`
+    flex-shrink: 0;
     position: relative;
 
     ${props => css`

@@ -1,6 +1,37 @@
 import styled from "styled-components";
 import { down, up } from "../../styles/breakpoints";
-import { Column } from "../../styles/styles";
+import { Content } from "../../styles/content";
+import { Column, Row } from "../../styles/styles";
+import { Header } from "../../styles/text";
+
+export const HeaderBackdrop = styled.img`
+    ${down('sm')} {
+        opacity: 0.75;
+        filter: blur(8px);
+    }
+`
+
+export const PosterHeaderWrapper = styled(Column)`
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+`
+
+export const CenteredHeader = styled(Header)`
+    text-align: center;
+`
+
+export const PosterHeaderCard = styled.img`    
+    width: 165px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+`
+
+export const HeaderDetailsItem = styled(Row)`
+    align-items: center;
+    gap: 4px;
+`
 
 export const HeaderWrapper = styled.div`
     height: 100%;
@@ -22,10 +53,9 @@ export const GridArea = styled.div<{
     grid-area: ${props => props.area};
 `
 
-export const MovieContent = styled.div`
+export const MovieContent = styled(Content)`
     box-sizing: content-box;
     max-width: 1200px;
-    padding: 0px 48px;
     margin: auto;
 `
 

@@ -10,6 +10,7 @@ export const lightTheme: DefaultTheme = {
     backgroundColor: '#FAFBFF',
     tooltipBackgroundColor: 'white',
     progressBackgroundColor: 'rgba(0, 0, 0, 0.08)',
+    starColor: '#FFA235',
 
     iconColor: '#304455',
     titleColor: '#304455',
@@ -34,6 +35,7 @@ export const darkTheme: DefaultTheme = {
     backgroundColor: '#16171B',
     tooltipBackgroundColor: '#0E0E0E',
     progressBackgroundColor: 'rgba(255, 255, 255, 0.05)',
+    starColor: '#FFC83D',
 
     iconColor: 'white',
     titleColor: 'white',

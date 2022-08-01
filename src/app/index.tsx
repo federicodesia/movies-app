@@ -10,6 +10,8 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useEffect } from 'react';
 import { fetchGenres, fetchPopularMovies } from '../redux/slices/movies-slice';
 import MoviePage from '../pages/movie';
+import useMediaQuery from '../hooks/use-media-query';
+import { up } from '../styles/breakpoints';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -20,11 +22,17 @@ function App() {
     dispatch(fetchPopularMovies())
   }, [dispatch])
 
+  const breakpoints = {
+    upLg: useMediaQuery(up('lg'))
+  }
+
   return (
     <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
       <TooltipProvider>
         <Wrapper>
-          <SideDrawer />
+          {
+            breakpoints.upLg && <SideDrawer />
+          }
 
           <Content>
             <Routes>
@@ -33,7 +41,9 @@ function App() {
             </Routes>
           </Content>
 
-          <FriendsDrawer />
+          {
+            breakpoints.upLg && <FriendsDrawer />
+          }
         </Wrapper>
       </TooltipProvider>
     </ThemeProvider>

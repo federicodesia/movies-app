@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { horizontalContentPadding, verticalContentPadding } from "../../styles/content";
 
 const headerHeight = '350px';
 const overlap = '0px';
@@ -31,9 +32,10 @@ export const HeaderBackdrop = styled(PositionAbsolute)`
 `
 
 export const HeaderContent = styled(PositionAbsolute)`
+    ${horizontalContentPadding}
+    
     display: flex;
     flex-direction: column;
-    padding: 0px 48px;
     color: white;
 
     margin-bottom: ${overlap};
@@ -50,5 +52,5 @@ export const PageContentWrapper = styled.div`
     right: 0;
     
     margin-top: -${overlap};
-    padding: 48px 0px;
+    ${verticalContentPadding}
 `
