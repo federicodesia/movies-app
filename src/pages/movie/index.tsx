@@ -179,7 +179,9 @@ const MoviePage = () => {
                 </Row>
             </MovieContent>
 
-            <HorizontalMovieList header='More like this' movies={similar?.slice(0, 12) ?? []} />
+            <HorizontalMovieList header='More like this' movies={
+                similar?.filter(movie => movie.id !== parsedId).slice(0, 12) ?? []
+            } />
         </Column>
     </OverlapPage>
 }

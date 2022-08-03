@@ -1,4 +1,5 @@
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useRef } from "react"
+import { useLocation } from "react-router-dom"
 import NavBar from "../nav-bar"
 import { PositionAbsolute, HeaderWrapper, HeaderContent, PageContentWrapper, HeaderChildren, HeaderBackdrop } from "./style"
 
@@ -11,7 +12,14 @@ interface OverlapPageProps {
 }
 
 const OverlapPage = ({ header, children }: OverlapPageProps) => {
-    return <PositionAbsolute>
+    const { pathname } = useLocation()
+    const scrollRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, [pathname])
+
+    return <PositionAbsolute ref={scrollRef}>
         {
             <HeaderWrapper>
                 {
