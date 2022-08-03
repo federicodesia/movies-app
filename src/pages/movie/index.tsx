@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { imagesService } from "../../services/images-service";
-import { moviesService } from "../../services/movies-service";
-import { Movie, MovieCredits, MovieDetail } from "../../services/movies-service/dto";
 import { Header, Title, Text, Paragraph, SectionTitle } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page"
 import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section, CastSection, HeaderBackdrop, PosterHeaderWrapper, PosterHeaderCard, HeaderDetailsItem, CenteredHeader } from "./style";
@@ -24,35 +21,21 @@ import { IconContext } from "react-icons";
 import { HiOutlineVideoCamera } from "react-icons/hi";
 import StarRating from "../../components/star-rating";
 import { useTheme } from "styled-components";
+import { useGetMovieCreditsQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery } from "../../redux/queries/movies-api";
 
 const MoviePage = () => {
     const { id } = useParams();
+    const parsedId = id ? parseInt(id) : undefined;
+    const data = parsedId && {
+        details: useGetMovieDetailsQuery(parsedId).data,
+        credits: useGetMovieCreditsQuery(parsedId).data,
+        similar: useGetSimilarMoviesQuery(parsedId).data?.results
+    }
 
     const theme = useTheme()
     const breakpoints = {
         upSm: useMediaQuery(up('sm'))
     }
-
-    const [data, setData] = useState<{
-        details?: MovieDetail
-        credits?: MovieCredits
-        similar?: Movie[]
-    } | undefined>()
-
-    useEffect(() => {
-        const movieId = id && parseInt(id)
-        movieId && Promise.all([
-            moviesService.getMovieDetails(movieId),
-            moviesService.getMovieCredits(movieId),
-            moviesService.getSimilarMovies(movieId)
-        ]).then(([details, credits, similar]) => {
-            setData({
-                details: details,
-                credits: credits,
-                similar: similar?.results
-            })
-        })
-    }, [])
 
     if (!data) return <></>
 
