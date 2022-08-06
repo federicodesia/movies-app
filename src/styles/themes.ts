@@ -27,6 +27,7 @@ export const lightTheme: DefaultTheme = {
         hoverColor: `${general.primaryColor}14`,
         activeColor: `${general.primaryColor}1F`,
         activeHoverColor: `${general.primaryColor}29`,
+        backdropColor: 'rgba(0, 0, 0, 0.16)'
     }
 }
 
@@ -52,5 +53,6 @@ export const darkTheme: DefaultTheme = {
         hoverColor: `${general.primaryColor}08`,
         activeColor: `${general.primaryColor}0D`,
         activeHoverColor: `${general.primaryColor}14`,
+        backdropColor: 'rgba(0, 0, 0, 0.35)'
     }
 }

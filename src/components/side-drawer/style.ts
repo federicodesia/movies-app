@@ -1,105 +1,33 @@
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
-import { SectionText, Text } from "../../styles/text"
-import { down } from "../../styles/breakpoints";
 
-const collapsed = down('xxl')
+export const BackdropWrapper = styled.div<{
+    isOpen: boolean
+}>`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 
-export const Wrapper = styled.div`
-    background-color: ${props => props.theme.menu.backgroundColor};
-    
-    width: 240px;
-    flex-shrink: 0;
+    visibility: hidden;
+    transition: all ease 300ms;
 
-    display: flex;
-    flex-direction: column;
-    padding: 24px 0px;
-    margin: 0px;
-    gap: 12px;
-
-    overflow-x: hidden;
-    overflow-y: overlay;
-
-    ${collapsed} {
-        width: 92px;
-    }
-`
-
-export const HeaderWrapper = styled.div`
-    margin: 16px 32px;
-`
-
-export const List = styled.ul`
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-`
-
-export const ListTitle = styled(SectionText)`
-    margin: 16px 32px;
-
-    ${collapsed} {
-        margin: 16px 0px;
-        text-align: center;
-    }
-`
-
-export const Item = styled.li`
-    display: flex;
-    align-items: center;
-
-    padding: 0px 24px;
-    padding-left: 0px;
-    gap: 20px;
-`
-
-export const StyledLink = styled(Link) <{ $isActive?: boolean }>`
-    flex: 1;
-    text-decoration: none;
-
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-
-    height: 44px;
-    border-radius: 12px;
-    color: ${props => props.theme.textColor};
-
-    &:hover {
-        background-color: ${props => props.theme.menu.hoverColor};
-    }
-
-    ${props => props.$isActive && css`
-        background-color: ${props => props.theme.menu.activeColor};
-        color: ${props => props.theme.primaryColor};
-
-        &:hover {
-            background-color: ${props => props.theme.menu.activeHoverColor};
-        }
+    ${props => props.isOpen && css`
+        visibility: visible;
+        background-color: ${props => props.theme.menu.backdropColor};
     `}
-`
 
-export const ItemIconWrapper = styled.div`
-    flex-shrink: 0;
-    
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    padding: 0px 16px;
-
-    ${collapsed} {
-        padding: 0;
-        width: 44px;
-    }
 `
 
-export const StyledLinkText = styled(Text)`    
-    color: inherit;
-    line-height: inherit;
+export const ContentWrapper = styled.div<{
+    isOpen: boolean
+}>`
+    transform: translateX(-100%);
+    transition: all ease 300ms;
 
-    ${collapsed} {
-        opacity: 0;
-    }
+    ${props => props.isOpen && css`
+        transform: translateX(0%);
+    `}
 `

@@ -25,6 +25,7 @@ declare module 'styled-components' {
             hoverColor: string
             activeColor: string
             activeHoverColor: string
+            backdropColor: string
         }
     }
 }
