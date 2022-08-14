@@ -56,6 +56,9 @@ export const CircleImageButton = styled(CircleButton)`
     position: relative;
     overflow: hidden;
     background-color: inherit;
+
+    height: 44px;
+    width: 44px;
     
     img {
         position: absolute;

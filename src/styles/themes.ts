@@ -12,6 +12,8 @@ export const lightTheme: DefaultTheme = {
     progressBackgroundColor: 'rgba(0, 0, 0, 0.08)',
     starColor: '#FFA235',
 
+    switchBackgroundColor: 'rgba(0, 0, 0, 0.75)',
+    separatorColor: 'rgba(0, 0, 0, 0.1)',
     iconColor: '#304455',
     titleColor: '#304455',
     textColor: 'rgba(0, 0, 0, 0.75)',
@@ -38,6 +40,8 @@ export const darkTheme: DefaultTheme = {
     progressBackgroundColor: 'rgba(255, 255, 255, 0.05)',
     starColor: '#FFC83D',
 
+    switchBackgroundColor: 'rgba(255, 255, 255, 0.1)',
+    separatorColor: 'rgba(255, 255, 255, 0.08)',
     iconColor: 'white',
     titleColor: 'white',
     textColor: 'rgba(255, 255, 255, 0.65)',

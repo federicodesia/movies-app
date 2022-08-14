@@ -1,32 +1,6 @@
-import styled, { css, keyframes } from "styled-components"
+import styled from "styled-components"
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-
-const slideUpAndFade = keyframes`
-  from { opacity: 0; transform: translateY(2px) }
-  to { opacity: 1; transform: translateY(0) }
-`
-
-const slideRightAndFade = keyframes`
-  from { opacity: 0; transform: translateX(-2px) }
-  to { opacity: 1; transform: translateX(0) }
-`
-
-const slideDownAndFade = keyframes`
-  from { opacity: 0; transform: translateY(-2px) }
-  to { opacity: 1; transform: translateY(0) }
-`
-
-const slideLeftAndFade = keyframes`
-  from { opacity: 0; transform: translateX(2px) }
-  to { opacity: 1; transform: translateX(0) }
-`
-
-const animationData = css`
-    &[data-side='top'] { animation-name: ${slideDownAndFade}; }
-    &[data-side='right'] { animation-name: ${slideLeftAndFade}; }
-    &[data-side='bottom'] { animation-name: ${slideUpAndFade}; }
-    &[data-side='left'] { animation-name: ${slideRightAndFade}; }
-`
+import { slideFadeAnimation } from "../../styles/slide-fade";
 
 export const StyledTooltipContent = styled(TooltipPrimitive.Content)`
   background-color: ${props => props.theme.tooltipBackgroundColor};
@@ -39,7 +13,7 @@ export const StyledTooltipContent = styled(TooltipPrimitive.Content)`
   animation-fill-mode: forwards;
 
   &[data-state='delayed-open'] {
-      ${animationData}
+      ${slideFadeAnimation}
   }
 `
 
@@ -48,7 +22,7 @@ export const StyledHoverCardContent = styled(StyledTooltipContent)`
   padding: 20px;
 
   &[data-state='open'] {
-    ${animationData}
+    ${slideFadeAnimation}
   }
 `
 

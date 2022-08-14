@@ -1,9 +1,10 @@
-import { Item, List, StyledDotIndicator, Wrapper, PositionRelative, ProfilePicture, HoverIconButton, HoverImageButton } from "./style"
+import { Item, List, StyledDotIndicator, Wrapper, PositionRelative, HoverIconButton, HoverImageButton } from "./style"
 import { MdAdd } from "react-icons/md"
 import { Row, Column } from "../../styles/styles"
 import ActiveIndicator from "../../styles/active-indicator"
 import { HoverCard, Tooltip } from "../tooltip"
 import { Title, Text } from "../../styles/text"
+import { ProfileImage } from "../../styles/profile-image"
 
 const FriendsDrawer = () => {
     return <Wrapper>
@@ -35,7 +36,7 @@ const FriendsDrawer = () => {
                             }
                             content={
                                 <Row gap='16px' >
-                                    <ProfilePicture src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
+                                    <ProfileImage src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
 
                                     <Column gap='4px'>
                                         <Title>Federico De Sía</Title>

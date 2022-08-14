@@ -10,6 +10,8 @@ declare module 'styled-components' {
         tooltipBackgroundColor: string
         progressBackgroundColor: string
         
+        separatorColor: string
+        switchBackgroundColor: string
         iconColor: string
         titleColor: string
         textColor: string

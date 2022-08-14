@@ -54,10 +54,3 @@ const hoverButton = css`
 
 export const HoverIconButton = styled(IconButton)`${hoverButton}`
 export const HoverImageButton = styled(CircleImageButton)`${hoverButton}`
-
-export const ProfilePicture = styled.img`
-    height: 42px;
-    width: 42px;
-    object-fit: cover;
-    border-radius: 50%;
-`
