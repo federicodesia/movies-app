@@ -55,12 +55,6 @@ export const ImageWrapper = styled.div`
     }
 `
 
-export const Image = styled.img`
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-`
-
 export const PlayIcon = styled(BsPlayCircle)`
     height: 28px;
     width: 28px;

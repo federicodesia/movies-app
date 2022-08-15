@@ -18,17 +18,11 @@ export const HeaderWrapper = styled.div`
 `
 
 export const HeaderBackdrop = styled(PositionAbsolute)`
-    img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-
-        mask-image: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 1) 0%,
-            transparent 100%
-        );
-    }
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        transparent 100%
+    );
 `
 
 export const HeaderContent = styled(PositionAbsolute)`

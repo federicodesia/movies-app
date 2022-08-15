@@ -53,24 +53,11 @@ export const OutlineCircleButton = styled(OutlineButton)`
 `
 
 export const CircleImageButton = styled(CircleButton)`
-    position: relative;
-    overflow: hidden;
-    background-color: inherit;
-
+    display: block;
     height: 44px;
     width: 44px;
-    
-    img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+    overflow: hidden;
+    background-color: inherit;
 `
 
 const icon = css`

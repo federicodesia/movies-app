@@ -18,7 +18,7 @@ import { MdOutlineDarkMode } from "react-icons/md"
 import { Column, Row } from "../../styles/styles"
 import { toggleThemeMode } from "../../redux/slices/theme-slice"
 import { Switch } from "../switch"
-import { ProfileImage } from "../../styles/profile-image"
+import { ProfileImg } from "../../styles/profile-image"
 
 const NavBar = () => {
     const dispatch = useAppDispatch()
@@ -61,13 +61,13 @@ const NavBar = () => {
                             align='end'
                             trigger={
                                 <CircleImageButton>
-                                    <img src={photoURL ?? ''} />
+                                    <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
                                 </CircleImageButton>
                             }
                             content={
                                 <Column gap='16px'>
                                     <Row gap='16px'>
-                                        <ProfileImage src={photoURL ?? ''} />
+                                        <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
                                         <Column gap='4px'>
                                             <Title>{user.displayName}</Title>
                                             <Text>{user.email}</Text>

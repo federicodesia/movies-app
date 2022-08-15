@@ -4,7 +4,10 @@ import { Row, Column } from "../../styles/styles"
 import ActiveIndicator from "../../styles/active-indicator"
 import { HoverCard, Tooltip } from "../tooltip"
 import { Title, Text } from "../../styles/text"
-import { ProfileImage } from "../../styles/profile-image"
+import { ProfileImg } from "../../styles/profile-image"
+import { Img } from "../img"
+
+const profileUrl = 'https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg'
 
 const FriendsDrawer = () => {
     return <Wrapper>
@@ -29,14 +32,14 @@ const FriendsDrawer = () => {
                             trigger={
                                 <PositionRelative>
                                     <HoverImageButton>
-                                        <img src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
+                                        <Img src={index < 2 ? profileUrl : undefined} alt='FD' />
                                     </HoverImageButton>
                                     <StyledDotIndicator isActive={index < 3} />
                                 </PositionRelative>
                             }
                             content={
                                 <Row gap='16px' >
-                                    <ProfileImage src='https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg' />
+                                    <ProfileImg src={profileUrl} alt='FD' />
 
                                     <Column gap='4px'>
                                         <Title>Federico De Sía</Title>

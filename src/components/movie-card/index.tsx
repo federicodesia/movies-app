@@ -1,10 +1,11 @@
 import { Movie } from "../../services/movies-service/dto"
-import { Wrapper, Image, ImageWrapper, Backdrop, PlayIcon, StyledLink } from "./style"
+import { Wrapper, ImageWrapper, Backdrop, PlayIcon, StyledLink } from "./style"
 import { Title, Text } from "../../styles/text"
 import { useAppSelector } from "../../redux/hooks"
 import { Column } from "../../styles/styles"
 import ProgressBar from "../progress-bar"
 import { imagesService } from "../../services/images-service"
+import { Img } from "../img"
 
 interface MovieCardProps {
     movie: Movie
@@ -17,7 +18,7 @@ const MovieCard = ({ movie, showViewedPercentage = false }: MovieCardProps) => {
     return <Wrapper>
         <StyledLink to={`/movie/${movie.id}`}>
             <ImageWrapper>
-                <Image src={imagesService.getBackdropUrl(movie.backdrop_path)} />
+                <Img src={imagesService.getBackdropUrl(movie.backdrop_path)} />
             
                 <Backdrop>
                     <PlayIcon/>

@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { Img } from "../../components/img";
 import { down, up } from "../../styles/breakpoints";
 import { Content } from "../../styles/content";
 import { Column, Row } from "../../styles/styles";
 import { Header } from "../../styles/text";
 
-export const HeaderBackdrop = styled.img`
+export const HeaderBackdrop = styled(Img)`
     ${down('sm')} {
         opacity: 0.75;
         filter: blur(8px);
@@ -21,10 +22,10 @@ export const CenteredHeader = styled(Header)`
     text-align: center;
 `
 
-export const PosterHeaderCard = styled.img`    
+export const PosterHeaderCard = styled(Img)`    
     width: 165px;
+    height: auto;
     aspect-ratio: 2 / 3;
-    object-fit: cover;
     border-radius: 12px;
 `
 
@@ -59,12 +60,10 @@ export const MovieContent = styled(Content)`
     margin: auto;
 `
 
-export const PosterCard = styled.img`
-    display: block;
-    
+export const PosterCard = styled(Img)`
     width: 200px;
+    height: auto;
     aspect-ratio: 2 / 3;
-    object-fit: cover;
     border-radius: 12px;
 
     ${down('xl')} {

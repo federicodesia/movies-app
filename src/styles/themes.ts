@@ -13,6 +13,7 @@ export const lightTheme: DefaultTheme = {
     starColor: '#FFA235',
 
     switchBackgroundColor: 'rgba(0, 0, 0, 0.75)',
+    fallbackColor: 'rgba(0, 0, 0, 0.12)',
     separatorColor: 'rgba(0, 0, 0, 0.1)',
     iconColor: '#304455',
     titleColor: '#304455',
@@ -41,6 +42,7 @@ export const darkTheme: DefaultTheme = {
     starColor: '#FFC83D',
 
     switchBackgroundColor: 'rgba(255, 255, 255, 0.1)',
+    fallbackColor: 'rgba(255, 255, 255, 0.08)',
     separatorColor: 'rgba(255, 255, 255, 0.08)',
     iconColor: 'white',
     titleColor: 'white',

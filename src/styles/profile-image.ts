@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Img } from "../components/img";
 
-export const ProfileImage = styled.img`
-    height: 42px;
-    width: 42px;
-    object-fit: cover;
+export const ProfileImg = styled(Img)`
+    flex-shrink: 0;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
 `

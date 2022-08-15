@@ -6,6 +6,7 @@ import { Column } from "../../styles/styles";
 import { Header, Text } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page";
 import { HeaderWrapper, Wrapper } from "./style"
+import { Img } from "../../components/img";
 
 const HomePage = () => {
 
@@ -15,7 +16,7 @@ const HomePage = () => {
     );
 
     return <OverlapPage header={{
-        backdrop: <img src='https://image.tmdb.org/t/p/original/vjnLXptqdxnpNJer5fWgj2OIGhL.jpg' />,
+        backdrop: <Img src='https://image.tmdb.org/t/p/original/vjnLXptqdxnpNJer5fWgj2OIGhL.jpg' />,
 
         children: <HeaderWrapper>
             <Column gap='6px'>

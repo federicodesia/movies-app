@@ -12,6 +12,7 @@ declare module 'styled-components' {
         
         separatorColor: string
         switchBackgroundColor: string
+        fallbackColor: string
         iconColor: string
         titleColor: string
         textColor: string
