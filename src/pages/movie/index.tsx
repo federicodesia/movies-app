@@ -22,6 +22,7 @@ import { HiOutlineVideoCamera } from "react-icons/hi";
 import StarRating from "../../components/star-rating";
 import { useTheme } from "styled-components";
 import { useGetMovieCreditsQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery } from "../../redux/queries/movies-api";
+import ReadMoreLess from "../../components/read-more-less";
 
 const MoviePage = () => {
     const { id } = useParams();
@@ -162,7 +163,7 @@ const MoviePage = () => {
 
                                 <Section>
                                     <SectionTitle>STORYLINE</SectionTitle>
-                                    <Paragraph>{overview}</Paragraph>
+                                    <ReadMoreLess collapsedHeight={134} text={overview} />
                                 </Section>
                             </Column>
 
