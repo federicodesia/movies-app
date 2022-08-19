@@ -2,8 +2,9 @@ import { Movie } from "../../services/movies-service/dto"
 import { Content } from "../../styles/content"
 import { Column } from "../../styles/styles"
 import { Header } from "../../styles/text"
+import HorizontalScroll from "../horizontal-scroll"
 import MovieCard from "../movie-card"
-import { HorizontalList } from "./style"
+import { List } from "./style"
 
 interface MovieCardProps {
     header: string
@@ -18,16 +19,18 @@ const HorizontalMovieList = ({ header, showViewedPercentage, movies }: MovieCard
             <Header>{header}</Header>
         </Content>
 
-        <HorizontalList>
-            {
-                movies.map((movie, index) => (
-                    <MovieCard
-                        key={`${movie.id} ${index}`}
-                        showViewedPercentage={showViewedPercentage}
-                        movie={movie} />
-                ))
-            }
-        </HorizontalList>
+        <HorizontalScroll>
+            <List>
+                {
+                    movies.map((movie, index) => (
+                        <MovieCard
+                            key={`${movie.id} ${index}`}
+                            showViewedPercentage={showViewedPercentage}
+                            movie={movie} />
+                    ))
+                }
+            </List>
+        </HorizontalScroll>
     </Column>
 }
 
