@@ -7,16 +7,16 @@ import { themeReducer } from "./slices/theme-slice";
 import { userReducer } from "./slices/user-slice";
 
 const rootReducer = combineReducers({
-    theme: themeReducer,
-    user: userReducer,
-    movies: moviesReducer,
+    themeReducer: themeReducer,
+    userReducer: userReducer,
+    moviesReducer: moviesReducer,
     [moviesApi.reducerPath]: moviesApi.reducer
 });
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['theme']
+    whitelist: ['themeReducer', 'userReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -27,7 +27,7 @@ export const store = configureStore({
         serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             ignoredActionPaths: ['payload'],
-            ignoredPaths: ['user']
+            ignoredPaths: ['userReducer']
         }
     }).concat(moviesApi.middleware)
 })

@@ -16,9 +16,9 @@ import SideDrawer from '../components/side-drawer';
 
 function App() {
   const dispatch = useAppDispatch()
-  const themeMode = useAppSelector((state) => state.theme.mode)
+  const themeMode = useAppSelector((state) => state.themeReducer.mode)
 
-  const isSideDrawerOpen = useAppSelector((state) => state.movies.isSideDrawerOpen)
+  const isSideDrawerOpen = useAppSelector((state) => state.moviesReducer.isSideDrawerOpen)
   const closeSideDrawer = () => dispatch(toggleSideDrawer())
 
   useEffect(() => {

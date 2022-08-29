@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { imagesService } from "../../services/images-service";
-import { Header, Title, Text, Paragraph, SectionTitle } from "../../styles/text";
+import { Header, Title, Text, SectionTitle } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page"
-import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section, CastSection, HeaderBackdrop, PosterHeaderWrapper, PosterHeaderCard, HeaderDetailsItem, CenteredHeader } from "./style";
+import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section, CastSection, HeaderBackdrop, PosterHeaderWrapper, PosterHeaderCard, HeaderDetailsItem, CenteredHeader, FavoriteButton } from "./style";
 import { Column, Container, Row } from "../../styles/styles";
 import { OutlineIconButton } from "../../styles/button";
 import { MdFavorite, MdShare } from "react-icons/md"
@@ -23,6 +23,9 @@ import StarRating from "../../components/star-rating";
 import { useTheme } from "styled-components";
 import { useGetMovieCreditsQuery, useGetMovieDetailsQuery, useGetSimilarMoviesQuery } from "../../redux/queries/movies-api";
 import ReadMoreLess from "../../components/read-more-less";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { addFavoriteMovie, removeFavoriteMovie } from "../../redux/slices/user-slice";
+import useDebounceFn from "../../hooks/use-debounce-fn";
 
 const MoviePage = () => {
     const { id } = useParams();
@@ -32,6 +35,16 @@ const MoviePage = () => {
         credits: useGetMovieCreditsQuery(parsedId).data,
         similar: useGetSimilarMoviesQuery(parsedId).data?.results
     }
+
+    const dispatch = useAppDispatch()
+    const favorites = useAppSelector(state => state.userReducer.favoriteMoviesId)
+    const isFavorite = parsedId ? favorites.some(id => id === parsedId) : false
+
+    const handleFavoriteClick = useDebounceFn(() => {
+        if (!parsedId) return
+        if (isFavorite) dispatch(removeFavoriteMovie(parsedId));
+        else dispatch(addFavoriteMovie(parsedId));
+    }, 300)
 
     const theme = useTheme()
     const breakpoints = {
@@ -151,9 +164,9 @@ const MoviePage = () => {
                                     <Row gap='8px'>
                                         <TextIconButton icon={<IoPlay />} text='Watch' />
 
-                                        <OutlineIconButton>
+                                        <FavoriteButton isFavorite={isFavorite} onClick={handleFavoriteClick}>
                                             <MdFavorite size='16px' />
-                                        </OutlineIconButton>
+                                        </FavoriteButton>
 
                                         <OutlineIconButton>
                                             <MdShare size='16px' />

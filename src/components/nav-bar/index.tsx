@@ -23,8 +23,8 @@ import { ProfileImg } from "../../styles/profile-image"
 const NavBar = () => {
     const dispatch = useAppDispatch()
     const state = useAppSelector(state => ({
-        user: state.user.user,
-        themeMode: state.theme.mode
+        user: state.userReducer.user,
+        themeMode: state.themeReducer.mode
     }));
 
     const { user, themeMode } = state

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Img } from "../../components/img";
 import { down, up } from "../../styles/breakpoints";
+import { OutlineIconButton } from "../../styles/button";
 import { Content } from "../../styles/content";
 import { Column, Row } from "../../styles/styles";
 import { Header } from "../../styles/text";
@@ -80,4 +81,11 @@ export const CastSection = styled(Section)`
         flex-shrink: 0;
         width: 220px;
     }
+`
+
+export const FavoriteButton = styled(OutlineIconButton)<{
+    isFavorite: boolean
+}>`
+    color: ${props => props.isFavorite && props.theme.primaryColor};
+    border-color: ${props => props.isFavorite && props.theme.primaryColor};
 `

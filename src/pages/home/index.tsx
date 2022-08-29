@@ -10,8 +10,9 @@ import { Img } from "../../components/img";
 
 const HomePage = () => {
 
+    const favoritesId = useAppSelector(state => state.userReducer.favoriteMoviesId)
     const popular = useAppSelector(
-        state => state.movies.popular,
+        state => state.moviesReducer.popular,
         shallowEqual,
     );
 
@@ -28,7 +29,7 @@ const HomePage = () => {
         </HeaderWrapper>
     }}>
         <Wrapper>
-            <HorizontalMovieList header='Continue watching' showViewedPercentage={true} movies={popular} />
+            <HorizontalMovieList header='Continue watching' showViewedPercentage={true} movies={favoritesId} />
             <HorizontalMovieList header='Popular' movies={popular} />
         </Wrapper>
     </OverlapPage>
