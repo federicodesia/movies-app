@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Wrapper, Content } from './style';
 import HomePage from '../pages/home';
-import FriendsDrawer from '../components/friends-drawer';
+import FriendsMenu from '../components/friends-menu';
 import { ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { lightTheme, darkTheme } from '../styles/themes';
@@ -44,7 +44,7 @@ function App() {
           </Content>
 
           {
-            breakpoints.upLg && <FriendsDrawer />
+            breakpoints.upLg && <FriendsMenu />
           }
         </Wrapper>
       </TooltipProvider>

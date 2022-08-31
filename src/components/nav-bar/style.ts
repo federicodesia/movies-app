@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DotIndicator } from "../../styles/dot-indicator";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -17,4 +18,8 @@ export const Options = styled.div`
 export const DotIconWrapper = styled.div`
     position: relative;
     cursor: pointer;
+`
+
+export const StyledDotIndicator = styled(DotIndicator)`
+    border: none;
 `

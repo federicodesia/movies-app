@@ -1,9 +1,8 @@
 import { AiOutlineMenu, AiOutlineMessage } from "react-icons/ai"
 import { FiBell } from "react-icons/fi"
 
-import { Wrapper, Options, DotIconWrapper } from "./style"
+import { Wrapper, Options, DotIconWrapper, StyledDotIndicator } from "./style"
 import { IconContext } from "react-icons"
-import { DotIndicator } from "../../styles/dot-indicator"
 import useMediaQuery from "../../hooks/use-media-query"
 import { down } from "../../styles/breakpoints"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
@@ -48,12 +47,12 @@ const NavBar = () => {
                     : <Options>
                         <DotIconWrapper>
                             <FiBell />
-                            <DotIndicator isActive={true} />
+                            <StyledDotIndicator isActive={true} />
                         </DotIconWrapper>
 
                         <DotIconWrapper>
                             <AiOutlineMessage />
-                            <DotIndicator isActive={true} />
+                            <StyledDotIndicator isActive={true} />
                         </DotIconWrapper>
 
                         <DropdownMenu

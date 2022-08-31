@@ -9,7 +9,7 @@ import { Img } from "../img"
 
 const profileUrl = 'https://media.ntslive.co.uk/crop/770x770/1cb9cc79-fcb5-42c1-b0f9-6a427a4332e8_1588204800.jpeg'
 
-const FriendsDrawer = () => {
+const FriendsMenu = () => {
     return <Wrapper>
         <List>
             <Item>
@@ -39,11 +39,11 @@ const FriendsDrawer = () => {
                             }
                             content={
                                 <Row gap='16px' >
-                                    <ProfileImg src={profileUrl} alt='FD' />
+                                    <ProfileImg src={index < 2 ? profileUrl : undefined} alt='FD' />
 
                                     <Column gap='4px'>
                                         <Title>Federico De Sía</Title>
-                                        <Text>Watching The Forever Purge</Text>
+                                        <Text>{index < 3 ? 'Watching The Forever Purge' : 'Offline'} </Text>
                                     </Column>
                                 </Row>
                             } />
@@ -56,4 +56,4 @@ const FriendsDrawer = () => {
     </Wrapper>
 }
 
-export default FriendsDrawer
+export default FriendsMenu
