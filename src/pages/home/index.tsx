@@ -7,14 +7,12 @@ import { Header, Text } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page";
 import { HeaderWrapper, Wrapper } from "./style"
 import { Img } from "../../components/img";
+import { useGetPopularMoviesQuery } from "../../redux/queries/movies-api";
 
 const HomePage = () => {
 
     const favoritesId = useAppSelector(state => state.userReducer.favoriteMoviesId)
-    const popular = useAppSelector(
-        state => state.moviesReducer.popular,
-        shallowEqual,
-    );
+    const popular = useGetPopularMoviesQuery().data?.results ?? []
 
     return <OverlapPage header={{
         backdrop: <Img src='https://image.tmdb.org/t/p/original/vjnLXptqdxnpNJer5fWgj2OIGhL.jpg' />,

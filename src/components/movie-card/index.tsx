@@ -1,12 +1,11 @@
 import { Movie, MovieDetail } from "../../services/movies-service/dto"
 import { Wrapper, ImageWrapper, Backdrop, PlayIcon, StyledLink } from "./style"
 import { Title, Text } from "../../styles/text"
-import { useAppSelector } from "../../redux/hooks"
 import { Column } from "../../styles/styles"
 import ProgressBar from "../progress-bar"
 import { imagesService } from "../../services/images-service"
 import { Img } from "../img"
-import { useGetMovieDetailsQuery } from "../../redux/queries/movies-api"
+import { useGetGenresQuery, useGetMovieDetailsQuery } from "../../redux/queries/movies-api"
 import { useMemo } from "react"
 import { isMovie } from "../../utils/guards"
 
@@ -30,14 +29,14 @@ const MovieIdCard = ({ id, ...rest }: MovieIdCardProps) => {
 }
 
 const MovieDataCard = ({ movie, showViewedPercentage = false }: MovieDataCardProps) => {
-    const genres = useAppSelector(state => state.moviesReducer.genres);
+    const genres = useGetGenresQuery().data?.genres ?? []
 
     const movieGenres = useMemo(() => {
         return ((isMovie(movie)
             ? movie.genre_ids?.slice(0, 2).map(id => genres.find(g => g.id === id)?.name)
             : movie.genres?.slice(0, 2).map(g => g.name)
         ) ?? []).filter(n => n !== undefined).join(', ')
-    }, [movie])
+    }, [movie, genres])
 
     return <Wrapper>
         <StyledLink to={`/movie/${movie.id}`}>

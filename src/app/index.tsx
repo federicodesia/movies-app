@@ -6,8 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { lightTheme, darkTheme } from '../styles/themes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { useEffect } from 'react';
-import { fetchGenres, fetchPopularMovies, toggleSideDrawer } from '../redux/slices/movies-slice';
+import { toggleSideDrawer } from '../redux/slices/movies-slice';
 import MoviePage from '../pages/movie';
 import useMediaQuery from '../hooks/use-media-query';
 import { up } from '../styles/breakpoints';
@@ -20,11 +19,6 @@ function App() {
 
   const isSideDrawerOpen = useAppSelector((state) => state.moviesReducer.isSideDrawerOpen)
   const closeSideDrawer = () => dispatch(toggleSideDrawer())
-
-  useEffect(() => {
-    dispatch(fetchGenres())
-    dispatch(fetchPopularMovies())
-  }, [dispatch])
 
   const breakpoints = {
     upLg: useMediaQuery(up('lg'))
