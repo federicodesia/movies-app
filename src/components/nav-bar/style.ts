@@ -9,10 +9,9 @@ export const Wrapper = styled.div`
     gap: 32px;
 `
 
-export const Options = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 24px;
+export const SearchBarSuggestionsArea = styled.div`
+    position: relative;
+    flex: 1;
 `
 
 export const DotIconWrapper = styled.div`

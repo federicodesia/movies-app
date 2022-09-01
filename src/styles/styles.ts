@@ -7,6 +7,7 @@ export const Row = styled.div<{
     justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
     changeDirection?: Breakpoint
+    flex?: string
 }>`
     display: flex;
     flex-direction: row;
@@ -23,6 +24,8 @@ export const Row = styled.div<{
             flex-direction: column;
         }
     `}
+
+    flex: ${props => props.flex};
 `
 
 export const Column = styled(Row)`

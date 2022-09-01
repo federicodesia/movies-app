@@ -1,6 +1,6 @@
-import { Wrapper, HeaderWrapper, List, Item, ListTitle, StyledLink, StyledLinkText, ItemIconWrapper, StyledHeader, MenuIcon } from "./style";
+import { Wrapper, HeaderWrapper, Item, ListTitle, StyledLink, StyledLinkText, ItemIconWrapper, StyledHeader, MenuIcon } from "./style";
 
-import { HiOutlineHome, HiOutlineLogout } from "react-icons/hi"
+import { HiOutlineHome } from "react-icons/hi"
 import { TbHeart, TbCalendarMinus, TbUser, TbUsers, TbSettings } from "react-icons/tb"
 import { useMatch, useResolvedPath } from "react-router-dom";
 import { IconContext } from "react-icons";
@@ -8,7 +8,6 @@ import ActiveIndicator from "../../styles/active-indicator";
 import useMediaQuery from "../../hooks/use-media-query";
 import { between } from "../../styles/breakpoints";
 import { Row } from "../../styles/styles";
-import { AiOutlineMenu } from "react-icons/ai";
 
 interface StyledListProps {
     title: string,
@@ -28,7 +27,7 @@ interface StyledItemProps extends ItemProps {
 
 const StyledList = ({ title, items, onClickItem }: StyledListProps) => <div>
     <ListTitle>{title} </ListTitle>
-    <List>
+    <ul>
         {
             items.map((item, index) => {
                 return <StyledItem
@@ -38,7 +37,7 @@ const StyledList = ({ title, items, onClickItem }: StyledListProps) => <div>
                 />
             })
         }
-    </List>
+    </ul>
 </div>
 
 const StyledItem = ({ to, icon, text, onClickItem }: StyledItemProps) => {

@@ -21,6 +21,9 @@ export const moviesApi = createApi({
         getSimilarMovies: builder.query<MovieList, number>({
             query: (id) => ({ url: `movie/${id}/similar` }),
         }),
+        searchMovie: builder.query<MovieList, string>({
+            query: (query) => ({ url: `search/movie/?query=${query}` }),
+        }),
     }),
 })
 
@@ -29,5 +32,6 @@ export const {
     useGetPopularMoviesQuery,
     useGetMovieDetailsQuery,
     useGetMovieCreditsQuery,
-    useGetSimilarMoviesQuery
+    useGetSimilarMoviesQuery,
+    useSearchMovieQuery
 } = moviesApi

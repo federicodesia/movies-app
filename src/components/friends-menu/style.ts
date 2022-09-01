@@ -11,10 +11,6 @@ export const Wrapper = styled.div`
 `
 
 export const List = styled.ul`
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-
     display: flex;
     flex-direction: column;
     gap: 28px;

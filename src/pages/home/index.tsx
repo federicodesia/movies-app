@@ -20,19 +20,21 @@ const HomePage = () => {
     const favoritesId = useAppSelector(state => state.userReducer.favoriteMoviesId)
     const popular = useGetPopularMoviesQuery().data?.results ?? []
 
-    return <OverlapPage header={{
-        backdrop: <Img src={headerMovie.backdropImage} />,
-        children: <HeaderWrapper>
-            <Column gap='6px'>
-                <Header>{headerMovie.title}</Header>
-                <Text maxLines={1}>{headerMovie.description}</Text>
-            </Column>
+    return <OverlapPage
+        showSearchBar={true}
+        header={{
+            backdrop: <Img src={headerMovie.backdropImage} />,
+            children: <HeaderWrapper>
+                <Column gap='6px'>
+                    <Header>{headerMovie.title}</Header>
+                    <Text maxLines={1}>{headerMovie.description}</Text>
+                </Column>
 
-            <Link to={headerMovie.url}>
-                <TextButton>Watch</TextButton>
-            </Link>
-        </HeaderWrapper>
-    }}>
+                <Link to={headerMovie.url}>
+                    <TextButton>Watch</TextButton>
+                </Link>
+            </HeaderWrapper>
+        }}>
         <Wrapper>
             <HorizontalMovieList header='Continue watching' showViewedPercentage={true} movies={favoritesId} />
             <HorizontalMovieList header='Popular' movies={popular} />

@@ -4,6 +4,7 @@ import NavBar from "../nav-bar"
 import { PositionAbsolute, HeaderWrapper, HeaderContent, PageContentWrapper, HeaderChildren, HeaderBackdrop } from "./style"
 
 interface OverlapPageProps {
+    showSearchBar?: boolean
     header?: {
         backdrop?: ReactNode
         children?: ReactNode
@@ -11,7 +12,7 @@ interface OverlapPageProps {
     children?: ReactNode
 }
 
-const OverlapPage = ({ header, children }: OverlapPageProps) => {
+const OverlapPage = ({ showSearchBar = false, header, children }: OverlapPageProps) => {
     const { pathname } = useLocation()
     const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -29,7 +30,7 @@ const OverlapPage = ({ header, children }: OverlapPageProps) => {
                 }
 
                 <HeaderContent>
-                    <NavBar />
+                    <NavBar showSearchBar={showSearchBar} />
                     {
                         header?.children && <HeaderChildren>
                             {header?.children}

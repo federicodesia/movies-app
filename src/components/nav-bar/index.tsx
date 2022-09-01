@@ -1,7 +1,7 @@
 import { AiOutlineMenu, AiOutlineMessage } from "react-icons/ai"
 import { FiBell } from "react-icons/fi"
 
-import { Wrapper, Options, DotIconWrapper, StyledDotIndicator } from "./style"
+import { Wrapper, DotIconWrapper, StyledDotIndicator, SearchBarSuggestionsArea } from "./style"
 import { IconContext } from "react-icons"
 import useMediaQuery from "../../hooks/use-media-query"
 import { down } from "../../styles/breakpoints"
@@ -14,12 +14,17 @@ import { DropdownItem, DropdownRightSlot, DropdownSeparator } from "../dropdown-
 import { Text, Title } from "../../styles/text"
 import { HiOutlineLogout } from "react-icons/hi"
 import { MdOutlineDarkMode } from "react-icons/md"
-import { Column, Row } from "../../styles/styles"
+import { Column, Container, Row } from "../../styles/styles"
 import { toggleThemeMode } from "../../redux/slices/theme-slice"
 import { Switch } from "../switch"
 import { ProfileImg } from "../../styles/profile-image"
+import SearchBar from "../search-bar"
 
-const NavBar = () => {
+interface NavBarProps {
+    showSearchBar: boolean
+}
+
+const NavBar = ({ showSearchBar }: NavBarProps) => {
     const dispatch = useAppDispatch()
     const state = useAppSelector(state => ({
         user: state.userReducer.user,
@@ -30,68 +35,82 @@ const NavBar = () => {
     const { photoURL } = user ?? {}
 
     const breakpoints = {
-        downLg: useMediaQuery(down('lg'))
+        downLg: useMediaQuery(down('lg')),
+        downSm: useMediaQuery(down('sm'))
     }
 
     return <IconContext.Provider value={{ size: '20px' }}>
         <Wrapper>
             {
-                breakpoints.downLg
-                    ? <AiOutlineMenu onClick={() => dispatch(toggleSideDrawer())} />
-                    : <div />
+                breakpoints.downLg && <Container flex={0}>
+                    <AiOutlineMenu onClick={() => dispatch(toggleSideDrawer())} />
+                </Container>
             }
 
-            {
-                user === null
-                    ? <TextButton onClick={() => dispatch(login())}>Login</TextButton>
-                    : <Options>
-                        <DotIconWrapper>
-                            <FiBell />
-                            <StyledDotIndicator isActive={true} />
-                        </DotIconWrapper>
+            <SearchBarSuggestionsArea>
+                <Row gap='24px' justifyContent='space-between' alignItems='center'>
+                    {
+                        showSearchBar ? <SearchBar /> : <div />
+                    }
 
-                        <DotIconWrapper>
-                            <AiOutlineMessage />
-                            <StyledDotIndicator isActive={true} />
-                        </DotIconWrapper>
+                    {
+                        user === null
+                            ? <TextButton onClick={() => dispatch(login())}>Login</TextButton>
+                            : <Row alignItems='center' gap='24px'>
 
-                        <DropdownMenu
-                            side='bottom'
-                            align='end'
-                            trigger={
-                                <CircleImageButton>
-                                    <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
-                                </CircleImageButton>
-                            }
-                            content={
-                                <Column gap='16px'>
-                                    <Row gap='16px'>
-                                        <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
-                                        <Column gap='4px'>
-                                            <Title>{user.displayName}</Title>
-                                            <Text>{user.email}</Text>
+                                {
+                                    !breakpoints.downSm && <DotIconWrapper>
+                                        <FiBell />
+                                        <StyledDotIndicator isActive={true} />
+                                    </DotIconWrapper>
+                                }
+
+                                {
+                                    !breakpoints.downSm && <DotIconWrapper>
+                                        <AiOutlineMessage />
+                                        <StyledDotIndicator isActive={true} />
+                                    </DotIconWrapper>
+                                }
+
+                                <DropdownMenu
+                                    side='bottom'
+                                    align='end'
+                                    trigger={
+                                        <CircleImageButton>
+                                            <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
+                                        </CircleImageButton>
+                                    }
+                                    content={
+                                        <Column gap='16px'>
+                                            <Row gap='16px'>
+                                                <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
+                                                <Column gap='4px'>
+                                                    <Title>{user.displayName}</Title>
+                                                    <Text>{user.email}</Text>
+                                                </Column>
+                                            </Row>
+                                            <DropdownSeparator />
+
+                                            <Column>
+                                                <DropdownItem onSelect={() => dispatch(toggleThemeMode())}>
+                                                    <MdOutlineDarkMode />
+                                                    <Text>Dark mode</Text>
+                                                    <DropdownRightSlot>
+                                                        <Switch checked={themeMode === 'dark'} />
+                                                    </DropdownRightSlot>
+                                                </DropdownItem>
+
+                                                <DropdownItem onSelect={() => dispatch(logout())}>
+                                                    <HiOutlineLogout />
+                                                    <Text>Logout</Text>
+                                                </DropdownItem>
+                                            </Column>
                                         </Column>
-                                    </Row>
-                                    <DropdownSeparator />
-
-                                    <Column>
-                                        <DropdownItem onSelect={() => dispatch(toggleThemeMode())}>
-                                            <MdOutlineDarkMode />
-                                            <Text>Dark mode</Text>
-                                            <DropdownRightSlot>
-                                                <Switch checked={themeMode === 'dark'} />
-                                            </DropdownRightSlot>
-                                        </DropdownItem>
-
-                                        <DropdownItem onSelect={() => dispatch(logout())}>
-                                            <HiOutlineLogout />
-                                            <Text>Logout</Text>
-                                        </DropdownItem>
-                                    </Column>
-                                </Column>
-                            } />
-                    </Options>
-            }
+                                    } />
+                            </Row>
+                    }
+                </Row>
+            </SearchBarSuggestionsArea>
         </Wrapper>
     </IconContext.Provider>
 }

@@ -43,12 +43,6 @@ export const StyledHeader = styled(Header)`
     line-height: 1;
 `
 
-export const List = styled.ul`
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-`
-
 export const ListTitle = styled(SectionText)`
     margin: 16px 32px;
 

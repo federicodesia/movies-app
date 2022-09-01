@@ -29,3 +29,9 @@ html {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
