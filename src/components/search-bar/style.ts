@@ -22,6 +22,10 @@ export const InputWrapper = styled(Row)`
     background-color: ${props => props.theme.backgroundColor};
     border-radius: 16px;
     overflow: hidden;
+
+    
+
+    box-shadow: ${props => props.theme.shadows.sm};
 `
 
 export const Input = styled.input`

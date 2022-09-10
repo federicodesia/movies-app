@@ -7,7 +7,7 @@ export const StyledDropdownContent = styled(DropdownMenuPrimitive.Content)`
     min-width: 250px;
 
     background-color: ${props => props.theme.tooltipBackgroundColor};
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
+    box-shadow: ${props => props.theme.shadows.sm};
     padding: 20px;
     border-radius: 8px;
 

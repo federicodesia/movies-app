@@ -4,7 +4,7 @@ import { slideFadeAnimation } from "../../styles/slide-fade";
 
 export const StyledTooltipContent = styled(TooltipPrimitive.Content)`
   background-color: ${props => props.theme.tooltipBackgroundColor};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
+  box-shadow: ${props => props.theme.shadows.sm};
   padding: 16px 20px;
   border-radius: 8px;
 

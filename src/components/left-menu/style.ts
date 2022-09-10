@@ -29,6 +29,8 @@ export const Wrapper = styled.div`
     ${down('xs')} {
         width: 100vw;
     }
+
+    box-shadow: ${props => props.theme.shadows.xs};
 `
 
 export const HeaderWrapper = styled.div`

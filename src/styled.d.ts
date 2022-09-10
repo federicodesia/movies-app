@@ -30,5 +30,10 @@ declare module 'styled-components' {
             activeHoverColor: string
             backdropColor: string
         }
+
+        shadows: {
+            xs: string,
+            sm: string
+        }
     }
 }

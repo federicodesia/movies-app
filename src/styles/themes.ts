@@ -2,7 +2,11 @@ import { DefaultTheme } from "styled-components"
 
 const general = {
     primaryColor: '#D81F26',
-    onlineColor: '#B5EDB3'
+    onlineColor: '#B5EDB3',
+    shadows: {
+        xs: 'rgba(0, 0, 0, 0.03) 0px 8px 24px',
+        sm: 'rgba(0, 0, 0, 0.1) 0px 8px 24px'
+    }
 }
 
 export const lightTheme: DefaultTheme = {

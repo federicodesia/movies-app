@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    box-shadow: ${props => props.theme.shadows.xs};
 `
 
 export const List = styled.ul`
