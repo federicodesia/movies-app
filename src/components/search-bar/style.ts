@@ -11,15 +11,13 @@ export const Wrapper = styled.div`
     flex: 1;
 `
 
-export const SearchIcon = styled(IoSearchOutline)`
-    margin: 0px 16px;
-    color: ${props => props.theme.iconColor};
-`
-
 export const InputWrapper = styled(Row)`
     height: 44px;
     max-width: 300px;
+    
     align-items: center;
+    padding: 0px 16px;
+    gap: 16px;
 
     background-color: ${props => props.theme.backgroundColor};
     border-radius: 16px;

@@ -30,7 +30,6 @@ export const HeaderContent = styled(PositionAbsolute)`
     
     display: flex;
     flex-direction: column;
-    color: white;
 
     margin-bottom: ${overlap};
 `

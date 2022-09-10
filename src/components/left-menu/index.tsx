@@ -1,13 +1,14 @@
-import { Wrapper, HeaderWrapper, Item, ListTitle, StyledLink, StyledLinkText, ItemIconWrapper, StyledHeader, MenuIcon } from "./style";
+import { Wrapper, HeaderWrapper, Item, ListTitle, StyledLink, StyledLinkText, ItemIconWrapper, StyledHeader } from "./style";
 
 import { HiOutlineHome } from "react-icons/hi"
 import { TbHeart, TbCalendarMinus, TbUser, TbUsers, TbSettings } from "react-icons/tb"
 import { useMatch, useResolvedPath } from "react-router-dom";
-import { IconContext } from "react-icons";
+import { IconContext } from "react-icons/lib";
 import ActiveIndicator from "../../styles/active-indicator";
 import useMediaQuery from "../../hooks/use-media-query";
 import { between } from "../../styles/breakpoints";
 import { Row } from "../../styles/styles";
+import { AiOutlineMenu } from "react-icons/ai";
 
 interface StyledListProps {
     title: string,
@@ -49,9 +50,13 @@ const StyledItem = ({ to, icon, text, onClickItem }: StyledItemProps) => {
         <Item>
             <ActiveIndicator side='left' isActive={isActive} />
             <StyledLink to={to} $isActive={isActive} onClick={onClickItem} >
-                <ItemIconWrapper>
-                    {icon}
-                </ItemIconWrapper>
+
+                <IconContext.Provider value={{ size: '18px' }}>
+                    <ItemIconWrapper>
+                        {icon}
+                    </ItemIconWrapper>
+                </IconContext.Provider>
+
                 <StyledLinkText maxLines={1}>{text} </StyledLinkText>
             </StyledLink>
         </Item>
@@ -67,60 +72,58 @@ const LeftMenu = ({ showCloseIcon = false, onClose }: LeftMenuProps) => {
     const collapsed = useMediaQuery(between('lg', 'xxl'))
     const close = () => onClose && onClose()
 
-    return <IconContext.Provider value={{ size: '18px' }}>
-        <Wrapper>
-            <HeaderWrapper>
-                {
-                    collapsed
-                        ? <Row justifyContent='center'>
-                            <StyledHeader>M</StyledHeader>
-                            <StyledHeader variant='light'>A</StyledHeader>
+    return <Wrapper>
+        <HeaderWrapper>
+            {
+                collapsed
+                    ? <Row justifyContent='center'>
+                        <StyledHeader>M</StyledHeader>
+                        <StyledHeader variant='light'>A</StyledHeader>
+                    </Row>
+                    : <Row alignItems='center' gap='16px'>
+                        {
+                            showCloseIcon && <AiOutlineMenu size='18px' onClick={close} />
+                        }
+
+                        <Row>
+                            <StyledHeader>MOVIES</StyledHeader>
+                            <StyledHeader variant='light'>APP</StyledHeader>
                         </Row>
-                        : <Row alignItems='center' gap='16px'>
-                            {
-                                showCloseIcon && <MenuIcon onClick={close} />
-                            }
+                    </Row>
+            }
+        </HeaderWrapper>
 
-                            <Row>
-                                <StyledHeader>MOVIES</StyledHeader>
-                                <StyledHeader variant='light'>APP</StyledHeader>
-                            </Row>
-                        </Row>
-                }
-            </HeaderWrapper>
+        <StyledList title='Menu' onClickItem={close} items={[
+            {
+                icon: <HiOutlineHome />,
+                text: 'Browse',
+                to: '/'
+            },
+            {
+                icon: <TbHeart />,
+                text: 'Watchlist',
+                to: '/watchlist'
+            },
+            {
+                icon: <TbCalendarMinus />,
+                text: 'Coming soon',
+                to: '/cooming-soon'
+            }
+        ]} />
 
-            <StyledList title='Menu' onClickItem={close} items={[
-                {
-                    icon: <HiOutlineHome />,
-                    text: 'Browse',
-                    to: '/'
-                },
-                {
-                    icon: <TbHeart />,
-                    text: 'Watchlist',
-                    to: '/watchlist'
-                },
-                {
-                    icon: <TbCalendarMinus />,
-                    text: 'Coming soon',
-                    to: '/cooming-soon'
-                }
-            ]} />
-
-            <StyledList title='Social' onClickItem={close} items={[
-                {
-                    icon: <TbUser />,
-                    text: 'Friends',
-                    to: '/friends'
-                },
-                {
-                    icon: <TbUsers />,
-                    text: 'Parties',
-                    to: '/parties'
-                }
-            ]} />
-        </Wrapper>
-    </IconContext.Provider>
+        <StyledList title='Social' onClickItem={close} items={[
+            {
+                icon: <TbUser />,
+                text: 'Friends',
+                to: '/friends'
+            },
+            {
+                icon: <TbUsers />,
+                text: 'Parties',
+                to: '/parties'
+            }
+        ]} />
+    </Wrapper>
 }
 
 export default LeftMenu

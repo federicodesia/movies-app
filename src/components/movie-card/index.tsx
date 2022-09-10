@@ -1,5 +1,5 @@
 import { Movie, MovieDetail } from "../../services/movies-service/dto"
-import { Wrapper, ImageWrapper, Backdrop, PlayIcon, StyledLink } from "./style"
+import { Wrapper, ImageWrapper, Backdrop, StyledLink } from "./style"
 import { Title, Text } from "../../styles/text"
 import { Column } from "../../styles/styles"
 import ProgressBar from "../progress-bar"
@@ -8,6 +8,7 @@ import { Img } from "../img"
 import { useGetGenresQuery, useGetMovieDetailsQuery } from "../../redux/queries/movies-api"
 import { useMemo } from "react"
 import { isMovie } from "../../utils/guards"
+import { BsPlayCircle } from "react-icons/bs"
 
 interface Props {
     showViewedPercentage?: boolean
@@ -44,7 +45,7 @@ const MovieDataCard = ({ movie, showViewedPercentage = false }: MovieDataCardPro
                 <Img src={imagesService.getBackdropUrl(movie.backdrop_path)} />
 
                 <Backdrop>
-                    <PlayIcon />
+                    <BsPlayCircle size='28px' color='white' />
                 </Backdrop>
             </ImageWrapper>
 

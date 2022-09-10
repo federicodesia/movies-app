@@ -19,6 +19,7 @@ import { toggleThemeMode } from "../../redux/slices/theme-slice"
 import { Switch } from "../switch"
 import { ProfileImg } from "../../styles/profile-image"
 import SearchBar from "../search-bar"
+import { useTheme } from "styled-components"
 
 interface NavBarProps {
     showSearchBar: boolean
@@ -34,30 +35,31 @@ const NavBar = ({ showSearchBar }: NavBarProps) => {
     const { user, themeMode } = state
     const { photoURL } = user ?? {}
 
+    const theme = useTheme()
     const breakpoints = {
         downLg: useMediaQuery(down('lg')),
         downSm: useMediaQuery(down('sm'))
     }
 
-    return <IconContext.Provider value={{ size: '20px' }}>
-        <Wrapper>
-            {
-                breakpoints.downLg && <Container flex={0}>
-                    <AiOutlineMenu onClick={() => dispatch(toggleSideDrawer())} />
-                </Container>
-            }
+    return <Wrapper>
+        {
+            breakpoints.downLg && <Container flex={0}>
+                <AiOutlineMenu size='20px' color='white' onClick={() => dispatch(toggleSideDrawer())} />
+            </Container>
+        }
 
-            <SearchBarSuggestionsArea>
-                <Row gap='24px' justifyContent='space-between' alignItems='center'>
-                    {
-                        showSearchBar ? <SearchBar /> : <div />
-                    }
+        <SearchBarSuggestionsArea>
+            <Row gap='24px' justifyContent='space-between' alignItems='center'>
+                {
+                    showSearchBar ? <SearchBar /> : <div />
+                }
 
-                    {
-                        user === null
-                            ? <TextButton onClick={() => dispatch(login())}>Login</TextButton>
-                            : <Row alignItems='center' gap='24px'>
+                {
+                    user === null
+                        ? <TextButton onClick={() => dispatch(login())}>Login</TextButton>
+                        : <Row alignItems='center' gap='24px'>
 
+                            <IconContext.Provider value={{ size: '20px', color: 'white' }}>
                                 {
                                     !breakpoints.downSm && <DotIconWrapper>
                                         <FiBell />
@@ -71,48 +73,48 @@ const NavBar = ({ showSearchBar }: NavBarProps) => {
                                         <StyledDotIndicator isActive={true} />
                                     </DotIconWrapper>
                                 }
+                            </IconContext.Provider>
 
-                                <DropdownMenu
-                                    side='bottom'
-                                    align='end'
-                                    trigger={
-                                        <CircleImageButton>
+                            <DropdownMenu
+                                side='bottom'
+                                align='end'
+                                trigger={
+                                    <CircleImageButton>
+                                        <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
+                                    </CircleImageButton>
+                                }
+                                content={
+                                    <Column gap='16px'>
+                                        <Row gap='16px'>
                                             <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
-                                        </CircleImageButton>
-                                    }
-                                    content={
-                                        <Column gap='16px'>
-                                            <Row gap='16px'>
-                                                <ProfileImg src={photoURL} alt={user.displayName} altType='initials' />
-                                                <Column gap='4px'>
-                                                    <Title>{user.displayName}</Title>
-                                                    <Text>{user.email}</Text>
-                                                </Column>
-                                            </Row>
-                                            <DropdownSeparator />
-
-                                            <Column>
-                                                <DropdownItem onSelect={() => dispatch(toggleThemeMode())}>
-                                                    <MdOutlineDarkMode />
-                                                    <Text>Dark mode</Text>
-                                                    <DropdownRightSlot>
-                                                        <Switch checked={themeMode === 'dark'} />
-                                                    </DropdownRightSlot>
-                                                </DropdownItem>
-
-                                                <DropdownItem onSelect={() => dispatch(logout())}>
-                                                    <HiOutlineLogout />
-                                                    <Text>Logout</Text>
-                                                </DropdownItem>
+                                            <Column gap='4px'>
+                                                <Title>{user.displayName}</Title>
+                                                <Text>{user.email}</Text>
                                             </Column>
+                                        </Row>
+                                        <DropdownSeparator />
+
+                                        <Column>
+                                            <DropdownItem onSelect={() => dispatch(toggleThemeMode())}>
+                                                <MdOutlineDarkMode />
+                                                <Text>Dark mode</Text>
+                                                <DropdownRightSlot>
+                                                    <Switch checked={themeMode === 'dark'} />
+                                                </DropdownRightSlot>
+                                            </DropdownItem>
+
+                                            <DropdownItem onSelect={() => dispatch(logout())}>
+                                                <HiOutlineLogout />
+                                                <Text>Logout</Text>
+                                            </DropdownItem>
                                         </Column>
-                                    } />
-                            </Row>
-                    }
-                </Row>
-            </SearchBarSuggestionsArea>
-        </Wrapper>
-    </IconContext.Provider>
+                                    </Column>
+                                } />
+                        </Row>
+                }
+            </Row>
+        </SearchBarSuggestionsArea>
+    </Wrapper>
 }
 
 export default NavBar

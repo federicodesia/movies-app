@@ -18,7 +18,6 @@ export const ArrowWrapper = styled.div<{
     bottom: 0;
 
     pointer-events: none;
-    color: ${props => props.theme.iconColor};
 
     opacity: ${props => props.isVisible ? 1 : 0};
     visibility: ${props => props.isVisible ? 'visible' : 'hidden'};

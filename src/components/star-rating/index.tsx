@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { IconContext } from "react-icons"
+import { IconContext } from "react-icons/lib"
 import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5"
 import { useTheme } from "styled-components"
 import { Row } from "../../styles/styles"

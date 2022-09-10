@@ -17,7 +17,7 @@ import { TbCalendarMinus } from "react-icons/tb"
 import { IoMdTime } from "react-icons/io"
 import useMediaQuery from "../../hooks/use-media-query";
 import { up } from "../../styles/breakpoints";
-import { IconContext } from "react-icons";
+import { IconContext } from "react-icons/lib";
 import { HiOutlineVideoCamera } from "react-icons/hi";
 import StarRating from "../../components/star-rating";
 import { useTheme } from "styled-components";

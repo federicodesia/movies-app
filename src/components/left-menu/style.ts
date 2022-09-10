@@ -31,10 +31,6 @@ export const Wrapper = styled.div`
     }
 `
 
-export const MenuIcon = styled(AiOutlineMenu)`
-    color: ${props => props.theme.iconColor};
-`
-
 export const HeaderWrapper = styled.div`
     margin: 16px 32px;
 `

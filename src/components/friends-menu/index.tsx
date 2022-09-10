@@ -18,7 +18,7 @@ const FriendsMenu = () => {
                     text='Add friend'
                     trigger={
                         <HoverIconButton>
-                            <MdAdd size={'24px'} />
+                            <MdAdd size='24px' color='white' />
                         </HoverIconButton>
                     } />
             </Item>

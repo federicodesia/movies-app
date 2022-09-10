@@ -1,3 +1,4 @@
+import { MdFavorite } from "react-icons/md";
 import styled from "styled-components";
 import { Img } from "../../components/img";
 import { down, up } from "../../styles/breakpoints";
@@ -83,9 +84,12 @@ export const CastSection = styled(Section)`
     }
 `
 
-export const FavoriteButton = styled(OutlineIconButton)<{
+export const FavoriteButton = styled(OutlineIconButton) <{
     isFavorite: boolean
 }>`
-    color: ${props => props.isFavorite && props.theme.primaryColor};
     border-color: ${props => props.isFavorite && props.theme.primaryColor};
+
+    * {
+        color: ${props => props.isFavorite && props.theme.primaryColor};
+    }
 `

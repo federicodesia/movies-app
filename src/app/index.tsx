@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Wrapper, Content } from './style';
 import HomePage from '../pages/home';
 import FriendsMenu from '../components/friends-menu';
-import { ThemeProvider } from 'styled-components';
+import { ThemeConsumer, ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { lightTheme, darkTheme } from '../styles/themes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -12,6 +12,7 @@ import useMediaQuery from '../hooks/use-media-query';
 import { up } from '../styles/breakpoints';
 import LeftMenu from '../components/left-menu';
 import SideDrawer from '../components/side-drawer';
+import { IconContext } from 'react-icons';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -26,28 +27,34 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
-      <TooltipProvider>
-        <Wrapper>
-          {
-            breakpoints.upLg
-              ? <LeftMenu />
-              : <SideDrawer isOpen={isSideDrawerOpen} onClose={closeSideDrawer}>
-                <LeftMenu showCloseIcon={true} onClose={closeSideDrawer} />
-              </SideDrawer>
-          }
+      <ThemeConsumer>
+        {
+          theme => <IconContext.Provider value={{ color: theme.iconColor }}>
+            <TooltipProvider>
+              <Wrapper>
+                {
+                  breakpoints.upLg
+                    ? <LeftMenu />
+                    : <SideDrawer isOpen={isSideDrawerOpen} onClose={closeSideDrawer}>
+                      <LeftMenu showCloseIcon={true} onClose={closeSideDrawer} />
+                    </SideDrawer>
+                }
 
-          <Content>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/movie/:id" element={<MoviePage />} />
-            </Routes>
-          </Content>
+                <Content>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/movie/:id" element={<MoviePage />} />
+                  </Routes>
+                </Content>
 
-          {
-            breakpoints.upLg && <FriendsMenu />
-          }
-        </Wrapper>
-      </TooltipProvider>
+                {
+                  breakpoints.upLg && <FriendsMenu />
+                }
+              </Wrapper>
+            </TooltipProvider>
+          </IconContext.Provider>
+        }
+      </ThemeConsumer>
     </ThemeProvider>
   )
 }

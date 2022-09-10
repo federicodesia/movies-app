@@ -1,11 +1,12 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react"
+import { IoSearchOutline } from "react-icons/io5"
 import useDebounce from "../../hooks/use-debounce"
 import useOnClickOutside from "../../hooks/use-on-click-outside"
 import { useGetGenresQuery, useSearchMovieQuery } from "../../redux/queries/movies-api"
 import { imagesService } from "../../services/images-service"
 import { Column } from "../../styles/styles"
 import { Title, Text } from "../../styles/text"
-import { Input, InputWrapper, PosterCard, SearchIcon, Suggestion, SuggestionsWrapper, SuggestionTitle, Wrapper } from "./style"
+import { Input, InputWrapper, PosterCard, Suggestion, SuggestionsWrapper, SuggestionTitle, Wrapper } from "./style"
 
 const SearchBar = () => {
     const [value, setValue] = useState('')
@@ -37,7 +38,7 @@ const SearchBar = () => {
 
     return <Wrapper ref={wrapperRef}>
         <InputWrapper onClick={handleInputWrapperClick}>
-            <SearchIcon />
+            <IoSearchOutline />
             <Input
                 ref={inputRef}
                 placeholder='Search movies...'

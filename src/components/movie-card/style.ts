@@ -54,9 +54,3 @@ export const ImageWrapper = styled.div`
         height: 165px;
     }
 `
-
-export const PlayIcon = styled(BsPlayCircle)`
-    height: 28px;
-    width: 28px;
-    color: white;
-`

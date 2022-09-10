@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { IconContext } from "react-icons"
+import { IconContext } from "react-icons/lib"
 import { useTheme } from "styled-components"
 import { StyledButton, StyledOutlineButton, RightSpace } from "./style"
 
