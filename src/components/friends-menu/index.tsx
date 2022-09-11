@@ -1,6 +1,6 @@
 import { Item, List, StyledDotIndicator, Wrapper, PositionRelative, HoverIconButton, HoverImageButton } from "./style"
 import { MdAdd } from "react-icons/md"
-import { Row, Column } from "../../styles/styles"
+import { Row, Column } from "../../styles/flex"
 import ActiveIndicator from "../../styles/active-indicator"
 import { HoverCard, Tooltip } from "../tooltip"
 import { Title, Text } from "../../styles/text"

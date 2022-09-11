@@ -4,7 +4,7 @@ import useDebounce from "../../hooks/use-debounce"
 import useOnClickOutside from "../../hooks/use-on-click-outside"
 import { useGetGenresQuery, useSearchMovieQuery } from "../../redux/queries/movies-api"
 import { imagesService } from "../../services/images-service"
-import { Column } from "../../styles/styles"
+import { Column } from "../../styles/flex"
 import { Title, Text } from "../../styles/text"
 import { Input, InputWrapper, PosterCard, Suggestion, SuggestionsWrapper, SuggestionTitle, Wrapper } from "./style"
 

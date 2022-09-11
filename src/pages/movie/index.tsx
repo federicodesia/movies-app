@@ -3,7 +3,7 @@ import { imagesService } from "../../services/images-service";
 import { Header, Title, Text, SectionTitle } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page"
 import { HeaderWrapper, GridArea, PosterCard, MovieContent, Section, CastSection, HeaderBackdrop, PosterHeaderWrapper, PosterHeaderCard, HeaderDetailsItem, CenteredHeader, FavoriteButton } from "./style";
-import { Column, Container, Row } from "../../styles/styles";
+import { Column, Row } from "../../styles/flex";
 import { OutlineIconButton } from "../../styles/button";
 import { MdFavorite, MdShare } from "react-icons/md"
 import { TextIconButton, OutlineTextIconButton } from "../../components/text-icon-button";
@@ -107,89 +107,87 @@ const MoviePage = () => {
                         </Column>
                     }
 
-                    <Container flex={1}>
-                        <Row gap='64px' changeDirection='lg'>
+                    <Row flex='1' gap='64px' changeDirection='lg'>
 
-                            <Column gap='48px'>
-                                <Column gap={breakpoints.upSm ? '18px' : '36px'}>
-                                    {
-                                        breakpoints.upSm
-                                            ? <Header>{title}</Header>
+                        <Column gap='48px'>
+                            <Column gap={breakpoints.upSm ? '18px' : '36px'}>
+                                {
+                                    breakpoints.upSm
+                                        ? <Header>{title}</Header>
 
-                                            : <Column alignItems='center' gap='12px'>
-                                                <CenteredHeader>{title}</CenteredHeader>
+                                        : <Column alignItems='center' gap='12px'>
+                                            <CenteredHeader>{title}</CenteredHeader>
 
-                                                <IconContext.Provider value={{
-                                                    color: theme.textColor,
-                                                    size: '16px'
-                                                }}>
-                                                    <Row alignItems='center' justifyContent='center' gap='8px' wrap='wrap'>
-                                                        <HeaderDetailsItem>
-                                                            <TbCalendarMinus />
-                                                            <Text>{release_date && new Date(release_date).getFullYear()}</Text>
-                                                        </HeaderDetailsItem>
+                                            <IconContext.Provider value={{
+                                                color: theme.textColor,
+                                                size: '16px'
+                                            }}>
+                                                <Row alignItems='center' justifyContent='center' gap='8px' wrap='wrap'>
+                                                    <HeaderDetailsItem>
+                                                        <TbCalendarMinus />
+                                                        <Text>{release_date && new Date(release_date).getFullYear()}</Text>
+                                                    </HeaderDetailsItem>
 
-                                                        <Text>|</Text>
+                                                    <Text>|</Text>
 
-                                                        <HeaderDetailsItem>
-                                                            <IoMdTime />
-                                                            <Text> {runtime && toHoursAndMinutes(runtime)} </Text>
-                                                        </HeaderDetailsItem>
+                                                    <HeaderDetailsItem>
+                                                        <IoMdTime />
+                                                        <Text> {runtime && toHoursAndMinutes(runtime)} </Text>
+                                                    </HeaderDetailsItem>
 
-                                                        <Text>|</Text>
+                                                    <Text>|</Text>
 
-                                                        <HeaderDetailsItem>
-                                                            <HiOutlineVideoCamera />
-                                                            <Text> {genres?.slice(0, 2).map(genre => genre.name).join(', ')} </Text>
-                                                        </HeaderDetailsItem>
-                                                    </Row>
-                                                </IconContext.Provider >
+                                                    <HeaderDetailsItem>
+                                                        <HiOutlineVideoCamera />
+                                                        <Text> {genres?.slice(0, 2).map(genre => genre.name).join(', ')} </Text>
+                                                    </HeaderDetailsItem>
+                                                </Row>
+                                            </IconContext.Provider >
 
-                                                <StarRating value={vote_average ?? 0} maxValue={10} />
-                                            </Column>
-                                    }
+                                            <StarRating value={vote_average ?? 0} maxValue={10} />
+                                        </Column>
+                                }
 
-                                    {
-                                        breakpoints.upSm && <Row gap='8px' wrap='wrap'>
-                                            {
-                                                genres?.slice(0, 3).map((genre, index) => {
-                                                    return <Chip key={`${genre.id} ${index}`}>
-                                                        {genre.name}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </Row>
-                                    }
-
-                                    <Row gap='8px'>
-                                        <TextIconButton icon={<IoPlay />} text='Watch' />
-
-                                        <FavoriteButton isFavorite={isFavorite} onClick={handleFavoriteClick}>
-                                            <MdFavorite size='16px' />
-                                        </FavoriteButton>
-
-                                        <OutlineIconButton>
-                                            <MdShare size='16px' />
-                                        </OutlineIconButton>
+                                {
+                                    breakpoints.upSm && <Row gap='8px' wrap='wrap'>
+                                        {
+                                            genres?.slice(0, 3).map((genre, index) => {
+                                                return <Chip key={`${genre.id} ${index}`}>
+                                                    {genre.name}
+                                                </Chip>
+                                            })
+                                        }
                                     </Row>
-                                </Column>
+                                }
 
-                                <Section>
-                                    <SectionTitle>STORYLINE</SectionTitle>
-                                    <ReadMoreLess collapsedHeight={134} text={overview} />
-                                </Section>
+                                <Row gap='8px'>
+                                    <TextIconButton icon={<IoPlay />} text='Watch' />
+
+                                    <FavoriteButton isFavorite={isFavorite} onClick={handleFavoriteClick}>
+                                        <MdFavorite size='16px' />
+                                    </FavoriteButton>
+
+                                    <OutlineIconButton>
+                                        <MdShare size='16px' />
+                                    </OutlineIconButton>
+                                </Row>
                             </Column>
 
-                            <CastSection>
-                                <SectionTitle>CAST</SectionTitle>
-                                {
-                                    credits?.cast?.slice(0, 5).map((item, index) => {
-                                        return <CastItem cast={item} key={`${item.id} ${index}`} />
-                                    })
-                                }
-                            </CastSection>
-                        </Row>
-                    </Container>
+                            <Section>
+                                <SectionTitle>STORYLINE</SectionTitle>
+                                <ReadMoreLess collapsedHeight={134} text={overview} />
+                            </Section>
+                        </Column>
+
+                        <CastSection>
+                            <SectionTitle>CAST</SectionTitle>
+                            {
+                                credits?.cast?.slice(0, 5).map((item, index) => {
+                                    return <CastItem cast={item} key={`${item.id} ${index}`} />
+                                })
+                            }
+                        </CastSection>
+                    </Row>
                 </Row>
             </MovieContent>
 

@@ -1,7 +1,7 @@
 import { Movie, MovieDetail } from "../../services/movies-service/dto"
 import { Wrapper, ImageWrapper, Backdrop, StyledLink } from "./style"
 import { Title, Text } from "../../styles/text"
-import { Column } from "../../styles/styles"
+import { Column } from "../../styles/flex"
 import ProgressBar from "../progress-bar"
 import { imagesService } from "../../services/images-service"
 import { Img } from "../img"

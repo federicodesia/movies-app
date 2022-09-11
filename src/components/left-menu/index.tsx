@@ -7,7 +7,7 @@ import { IconContext } from "react-icons/lib";
 import ActiveIndicator from "../../styles/active-indicator";
 import useMediaQuery from "../../hooks/use-media-query";
 import { between } from "../../styles/breakpoints";
-import { Row } from "../../styles/styles";
+import { Row } from "../../styles/flex";
 import { AiOutlineMenu } from "react-icons/ai";
 
 interface StyledListProps {

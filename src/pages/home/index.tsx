@@ -1,7 +1,7 @@
 import HorizontalMovieList from "../../components/horizontal-movie-list";
 import { useAppSelector } from "../../redux/hooks";
 import { TextButton } from "../../styles/button";
-import { Column } from "../../styles/styles";
+import { Column } from "../../styles/flex";
 import { Header, Text } from "../../styles/text";
 import OverlapPage from "../../components/overlap-page";
 import { HeaderWrapper, Wrapper } from "./style"

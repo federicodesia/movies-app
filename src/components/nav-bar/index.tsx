@@ -14,12 +14,11 @@ import { DropdownItem, DropdownRightSlot, DropdownSeparator } from "../dropdown-
 import { Text, Title } from "../../styles/text"
 import { HiOutlineLogout } from "react-icons/hi"
 import { MdOutlineDarkMode } from "react-icons/md"
-import { Column, Container, Row } from "../../styles/styles"
+import { Column, Row } from "../../styles/flex"
 import { toggleThemeMode } from "../../redux/slices/theme-slice"
 import { Switch } from "../switch"
 import { ProfileImg } from "../../styles/profile-image"
 import SearchBar from "../search-bar"
-import { useTheme } from "styled-components"
 
 interface NavBarProps {
     showSearchBar: boolean
@@ -35,7 +34,6 @@ const NavBar = ({ showSearchBar }: NavBarProps) => {
     const { user, themeMode } = state
     const { photoURL } = user ?? {}
 
-    const theme = useTheme()
     const breakpoints = {
         downLg: useMediaQuery(down('lg')),
         downSm: useMediaQuery(down('sm'))
@@ -43,9 +41,7 @@ const NavBar = ({ showSearchBar }: NavBarProps) => {
 
     return <Wrapper>
         {
-            breakpoints.downLg && <Container flex={0}>
-                <AiOutlineMenu size='20px' color='white' onClick={() => dispatch(toggleSideDrawer())} />
-            </Container>
+            breakpoints.downLg && <AiOutlineMenu size='20px' color='white' onClick={() => dispatch(toggleSideDrawer())} />
         }
 
         <SearchBarSuggestionsArea>

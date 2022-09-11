@@ -1,7 +1,7 @@
 import { imagesService } from "../../services/images-service"
 import { Cast } from "../../services/movies-service/dto"
 import { ProfileImg } from "../../styles/profile-image"
-import { Row, Column } from "../../styles/styles"
+import { Row, Column } from "../../styles/flex"
 import { Text, Title } from "../../styles/text"
 
 interface CastItemProps {

@@ -1,4 +1,10 @@
-import { DefaultTheme } from "styled-components"
+import { createGlobalStyle, DefaultTheme } from "styled-components"
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${props => props.theme.backgroundColor};
+  }
+`
 
 const general = {
     primaryColor: '#D81F26',

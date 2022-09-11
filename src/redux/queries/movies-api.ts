@@ -22,7 +22,7 @@ export const moviesApi = createApi({
             query: (id) => ({ url: `movie/${id}/similar` }),
         }),
         searchMovie: builder.query<MovieList, string>({
-            query: (query) => ({ url: `search/movie/?query=${query}` }),
+            query: (query) => ({ url: `search/movie?query=${query}` }),
         }),
     }),
 })

@@ -4,7 +4,7 @@ import HomePage from '../pages/home';
 import FriendsMenu from '../components/friends-menu';
 import { ThemeConsumer, ThemeProvider } from 'styled-components';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
-import { lightTheme, darkTheme } from '../styles/themes';
+import { lightTheme, darkTheme, GlobalStyle } from '../styles/theme';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { toggleSideDrawer } from '../redux/slices/movies-slice';
 import MoviePage from '../pages/movie';
@@ -29,30 +29,32 @@ function App() {
     <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
       <ThemeConsumer>
         {
-          theme => <IconContext.Provider value={{ color: theme.iconColor }}>
-            <TooltipProvider>
-              <Wrapper>
-                {
-                  breakpoints.upLg
+          theme => <>
+            <GlobalStyle />
+            <IconContext.Provider value={{
+              color: theme.iconColor,
+              style: { flexShrink: 0 }
+            }}>
+              <TooltipProvider>
+                <Wrapper>
+                  {breakpoints.upLg
                     ? <LeftMenu />
                     : <SideDrawer isOpen={isSideDrawerOpen} onClose={closeSideDrawer}>
                       <LeftMenu showCloseIcon={true} onClose={closeSideDrawer} />
-                    </SideDrawer>
-                }
+                    </SideDrawer>}
 
-                <Content>
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/movie/:id" element={<MoviePage />} />
-                  </Routes>
-                </Content>
+                  <Content>
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/movie/:id" element={<MoviePage />} />
+                    </Routes>
+                  </Content>
 
-                {
-                  breakpoints.upLg && <FriendsMenu />
-                }
-              </Wrapper>
-            </TooltipProvider>
-          </IconContext.Provider>
+                  {breakpoints.upLg && <FriendsMenu />}
+                </Wrapper>
+              </TooltipProvider>
+            </IconContext.Provider>
+          </>
         }
       </ThemeConsumer>
     </ThemeProvider>

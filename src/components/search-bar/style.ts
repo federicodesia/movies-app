@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { down } from "../../styles/breakpoints";
 import { slideDownAndFade } from "../../styles/slide-fade";
-import { Row } from "../../styles/styles";
+import { Row } from "../../styles/flex";
 import { Title } from "../../styles/text";
 import { Img } from "../img";
 

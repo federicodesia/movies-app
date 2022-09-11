@@ -1,6 +1,6 @@
 import { Movie } from "../../services/movies-service/dto"
 import { Content } from "../../styles/content"
-import { Column } from "../../styles/styles"
+import { Column } from "../../styles/flex"
 import { Header } from "../../styles/text"
 import HorizontalScroll from "../horizontal-scroll"
 import MovieCard from "../movie-card"

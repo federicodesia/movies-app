@@ -4,7 +4,7 @@ import { Img } from "../../components/img";
 import { down, up } from "../../styles/breakpoints";
 import { OutlineIconButton } from "../../styles/button";
 import { Content } from "../../styles/content";
-import { Column, Row } from "../../styles/styles";
+import { Column, Row } from "../../styles/flex";
 import { Header } from "../../styles/text";
 
 export const HeaderBackdrop = styled(Img)`

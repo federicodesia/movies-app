@@ -37,27 +37,3 @@ export const Column = styled(Row)`
         }
     `}
 `
-
-export const Container = styled.div<{
-    width?: string
-    minWidth?: string
-    maxWidth?: string
-    height?: string
-    minHeight?: string
-    maxHeight?: string
-    flex?: number
-}>`
-    flex-shrink: 0;
-
-    ${props => css`
-        flex: ${props.flex};
-
-        width: ${props.width};
-        min-width: ${props.minWidth};
-        max-width: ${props.maxWidth};
-
-        height: ${props.height};
-        min-height: ${props.minHeight};
-        max-height: ${props.maxHeight};
-    `}
-`

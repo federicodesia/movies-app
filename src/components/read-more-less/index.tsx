@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import useElementSize from "../../hooks/use-element-size"
-import { Column } from "../../styles/styles"
+import { Column } from "../../styles/flex"
 import { Paragraph } from "../../styles/text"
 import { TextWrapper, ToggleText } from "./style"
 
